@@ -1,0 +1,122 @@
+/**
+ * 基础css样式
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+ol, ul {
+    list-style: none;
+}
+
+a {text-decoration: none;}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #DDD;
+    overflow: hidden;
+    font-size: 12px;
+    color: #666;
+    font: 12px/1.5 'Microsoft YaHei UI','Microsoft YaHei','Segoe UI','Lucida Grande',Verdana,Arial,Helvetica,sans-serif;
+}
+
+/*清除浮动*/
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+/*字体icon相关样式*/
+.fa-white {
+    color: #FFF;
+}
+.fa-sz-20 {
+    font-size: 20px;
+}
+.fa-sz-40 {
+    font-size: 40px;
+}
+.fa-sz-60 {
+    font-size: 60px;
+}
+
+/*各颜色值*/
+.color-blue {
+    color: #2fa4e7;
+ }
+.color-green {
+    color: #73a839;
+ }
+.color-deep-blue {
+    color: #033c73;
+ }
+.color-orange {
+    color:  #dd5600;
+ }
+.color-red {
+    color: #c71c22;
+ }
+.bg-blue {
+
+    background-color: #2fa4e7;
+    background-image: -webkit-linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
+    background-image: -o-linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#54b4eb), color-stop(60%, #2fa4e7), to(#1d9ce5));
+    background-image: linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
+
+}
+
+#app-wrap {
+    position: relative;
+    max-width: 720px;
+    height: 100%;
+    margin: 0 auto;
+    background-color: #FFF;
+ }
+#app-wrap > section {
+    position: absolute;
+    left: 720px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: left 0.5s;
+    -o-transition: left 0.5s;
+    transition: left 0.5s;
+ }
+#app-wrap .show-app-view,
+#app-wrap .app-view-index {
+    left: 0;
+}
+#app-wrap .app-view-nav-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    color: #FFF;
+    font-size: 40px;
+    text-indent: -100px;
+}
+#app-wrap .app-view-nav-bar a {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-right: 1px solid #1995dc;
+    font-style: normal;
+    text-indent: 0;
+    cursor: pointer;
+}
+#app-wrap .app-view-content {
+    height: 100%;
+    background-color: #FFF;
+}
