@@ -69,11 +69,56 @@ define(function (require) {
         return getRoot('/avatar/'+_id, 'cdnAvatar');
     }
 
+    /**
+     * 获取图片地址
+     * @param  {String} key  图片在七牛上的key
+     * @param  {String} type 类型 s/m
+     * @return {String}      图片地址
+     */
+    function getImg (key, type) {
+        type = type || 's';
+
+        return getRoot(key+'-'+type, 'cdnAvatar');
+    }
+
+    /**
+     * 格式化时间，按照不同的格式返回不同的字符串
+     * @param  {Number} time   时间戳，如果不传，或者为null，则为当前时间
+     * @param  {String} format 字符串格式 (Y:年, M:月, D:日, h:小时, m:分钟, s:秒)
+     * @return {String}        字符串
+     */
+    function _formatTime (time,format) {
+        format = format || "yyyy-MM-dd hh:mm:ss";
+
+        var datetime = time ? new Date(time) : new Date(),
+            o = {
+                "M+": datetime.getMonth() + 1, //month
+                "d+": datetime.getDate(), //day
+                "h+": datetime.getHours(), //hour
+                "m+": datetime.getMinutes(), //minute
+                "s+": datetime.getSeconds(), //second
+                "q+": Math.floor((datetime.getMonth() + 3) / 3), //quarter
+                "S": datetime.getMilliseconds() //millisecond
+            };
+
+        if (/(y+)/.test(format)) {
+            format = format.replace(RegExp.$1, (datetime.getFullYear() + "").substr(4 - RegExp.$1.length));
+        }
+
+        for (var k in o) {
+            if (new RegExp("(" + k + ")").test(format)) {
+                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+            }
+        }
+        return format;
+    }
+
     return {
         getRoot   : getRoot,
         isRelease : isRelease,
         debug     : debug,
         sync      : sync,
-        getAvatar : getAvatar
+        getAvatar : getAvatar,
+        getImg : getImg
     };
  });

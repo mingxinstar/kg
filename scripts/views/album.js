@@ -15,7 +15,7 @@ define(function (require) {
 
     var albumView = backbone.View.extend({
         tagName : 'li',
-
+        
     });
 
     return albumView;

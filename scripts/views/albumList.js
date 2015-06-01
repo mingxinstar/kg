@@ -9,6 +9,8 @@ define(function (require) {
     var backbone = require('backbone'),
         $ = require('zepto'),
 
+        core = require('base/core'),
+        kd = require('models/kd'),
         albumList = require('collections/albumList');
 
     var albumListView = backbone.View.extend({
@@ -23,7 +25,11 @@ define(function (require) {
             this.$('.app-view-content').html('ul');
         },
         render : function () {
-            
+            core.debug(this.collection.toJSON());
+
+            this.collection.forEach(function (data) {
+                data.teacher = kd.getData(data.teacher_id);
+            });
         }
     });
 
