@@ -11,25 +11,37 @@ define(function (require) {
 
         core = require('base/core'),
         kd = require('models/kd'),
+        albumView = require('views/album'),
         albumList = require('collections/albumList');
 
     var albumListView = backbone.View.extend({
         el : '.app-view-album',
         collection : albumList,
         initialize : function () {
+            core.loadCss('album');
+
+            this.$content = this.$('.app-view-content');
+
+            this.$content.html('<ul></ul>');
+            this.$el.addClass('show-app-view');
+            
             this.listenTo(this.collection, 'reset', this.render);
 
-            this.collection.fetch({reset : true});
+            this.$content.on('scroll', this.handleScroll);
 
-            this.$el.addClass('show-app-view');
-            this.$('.app-view-content').html('ul');
+            this.collection.fetch({reset : true});
         },
         render : function () {
             core.debug(this.collection.toJSON());
 
-            this.collection.forEach(function (data) {
-                data.teacher = kd.getData(data.teacher_id);
-            });
+            this.collection.each(function (model) {
+                var view = new albumView({model : model});
+
+                this.$content.find('ul').append(view.render().$el);
+            }, this);
+        },
+        handleScroll : function (e) {
+            core.debug('scroll : ', e, $(this).height(), $(this).scrollTop());
         }
     });
 

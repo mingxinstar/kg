@@ -25,7 +25,9 @@ define(function (require) {
             this.listenTo(this.model, 'change', this.render);
             this.listenTo(this.model2, 'change', this.renderWeather);
 
-            this.model.fetch();
+            // 测试用，设置身份
+            core.setCookie('_k_openid', 'ox3k3t22bS1z-9IXemNz26Bicc7s', 30);
+            // this.model.fetch();
             this.model2.fetch();
         },
         render : function () {
@@ -44,9 +46,9 @@ define(function (require) {
             return this;
         },
         renderWeather : function () {
-            core.debug('weather : ', this.model2.toJSON());
+            // core.debug('weather : ', this.model2.toJSON());
 
-            this.$('.index-header-weather').html(template(weatherTmpl, this.model2.toJSON()));
+            this.$('.index-header-weather').html(template(weatherTmpl, {data : this.model2.toJSON()}));
         }
     });
 

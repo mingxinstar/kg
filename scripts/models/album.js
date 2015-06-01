@@ -6,5 +6,9 @@
  */
 
 define(function (require) {
+    var backbone = require('backbone');
 
+    // var albumModel = backbone.Model.extend({
+    //     urls : {}
+    // });
 });

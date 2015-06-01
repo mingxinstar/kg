@@ -13,17 +13,12 @@ define(function (require) {
         url : '/crm/get_bdtq/上海',
         sync : core.sync,
         initialize : function () {
-            core.debug('weatherModel initialize');
-
-            // this.on('sync', this.syncData);
+            // core.debug('weatherModel initialize');
         },
-        syncData : function (model, res, options) {
-            core.debug('weatherModel syncData : ', res);
-
-            this.set(res.data);
+        parse : function (res) {
+            return res.data;
         }
     });
-
 
     return new weatherModel();
 });

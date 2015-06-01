@@ -1,0 +1,33 @@
+/**
+ * 相册页样式
+ *
+ * @author mingxin.huang
+ * @update 2015.06.01
+ */
+
+.app-view-album {}
+
+.app-view-album .app-view-content {}
+.app-view-album .app-view-content ul {}
+.app-view-album .app-view-content li {width: 640px; padding: 20px; margin: 20px auto; background-color: #FFF;}
+/*基础信息样式*/
+.app-view-album .album-info-area {position: relative; margin: 0 0 20px;}
+.app-view-album .album-info-area > a {float: left; width: 100px; height: 100px; margin: 0 20px 0 0; border-radius: 10px; overflow: hidden;}
+.app-view-album .album-info-area img {width: 100px; height: 100px;}
+.app-view-album .album-info-area div {float: left;}
+.app-view-album .album-info-area p {height: 50px; line-height: 50px;}
+.app-view-album .album-info-area i {position: absolute; right: 10px; top: 10px;}
+/*描述样式*/
+.app-view-album .album-desc-area {margin: -0px 0 20px; line-height: 40px;}
+/*编辑区域样式*/
+.app-view-album .album-edit-area {display: none; margin: 0 0 20px;}
+.app-view-album .album-edit-area.show-edit {display: block;}
+.app-view-album .album-edit-area input {width: 100%; height: 60px; line-height: 60px; border: 2px solid #CCC; text-indent: 10px;}
+/*小图片预览样式*/
+.app-view-album .album-pics-area {}
+.app-view-album .album-pics-area img {float: left; margin: 0 20px 0 0;}
+.app-view-album .album-pics-area .trd-img {margin: 0;}
+/*底部提示*/
+.app-view-album .album-tips-area {text-align: right;}
+.app-view-album .album-tips-area i {margin: 0 10px 0 0;}
+/*.app-view-album .album-tips-area span {float: right; height: 26px; line-height: 26px;}*/

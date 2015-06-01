@@ -78,7 +78,7 @@ define(function (require) {
     function getImg (key, type) {
         type = type || 's';
 
-        return getRoot(key+'-'+type, 'cdnAvatar');
+        return getRoot('/'+key+'-'+type, 'cdnAvatar');
     }
 
     /**
@@ -87,7 +87,7 @@ define(function (require) {
      * @param  {String} format 字符串格式 (Y:年, M:月, D:日, h:小时, m:分钟, s:秒)
      * @return {String}        字符串
      */
-    function _formatTime (time,format) {
+    function formatTime (time,format) {
         format = format || "yyyy-MM-dd hh:mm:ss";
 
         var datetime = time ? new Date(time) : new Date(),
@@ -113,12 +113,46 @@ define(function (require) {
         return format;
     }
 
+    var loadedCss = [];
+    /**
+     * 加载css文件
+     * @param  {String} file css文件名
+     */
+    function loadCss (file) {
+        if (loadedCss.indexOf(file) > -1) {
+            return;
+        }
+
+        loadedCss.push(file);
+
+        var $head = $('head'),
+            path = '/styles/'+file+'.css';
+
+        $head.append('<link rel="stylesheet" href="'+path+'" />')
+    }
+
+    /**
+     * 设置cookie
+     * @param {[type]} cname  [description]
+     * @param {[type]} cvalue [description]
+     * @param {[type]} exdays [description]
+     */
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
     return {
-        getRoot   : getRoot,
-        isRelease : isRelease,
-        debug     : debug,
-        sync      : sync,
-        getAvatar : getAvatar,
-        getImg : getImg
+        getRoot    : getRoot,
+        isRelease  : isRelease,
+        debug      : debug,
+        sync       : sync,
+        getAvatar  : getAvatar,
+        getImg     : getImg,
+        formatTime : formatTime,
+        loadCss    : loadCss,
+        setCookie  : setCookie
     };
  });
