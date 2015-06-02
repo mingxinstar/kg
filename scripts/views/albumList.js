@@ -21,15 +21,23 @@ define(function (require) {
             core.loadCss('album');
 
             this.$content = this.$('.app-view-content');
-
             this.$content.html('<ul></ul>');
-            this.$el.addClass('show-app-view');
-            
+            this.$list = this.$('ul');
+
+            // 绑定collection
             this.listenTo(this.collection, 'reset', this.render);
 
+            // 绑定滚动事件
             this.$content.on('scroll', this.handleScroll);
 
             this.collection.fetch({reset : true});
+        },
+        /**
+         * 显示当前面板
+         * @return {[type]} [description]
+         */
+        show : function () {
+            this.$el.addClass('show-app-view');
         },
         render : function () {
             core.debug(this.collection.toJSON());
@@ -45,5 +53,5 @@ define(function (require) {
         }
     });
 
-    return albumListView;
+    return new albumListView();
 });

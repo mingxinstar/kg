@@ -24,7 +24,8 @@ define(function (require) {
             console.log('album');
 
             require(['views/albumList'], function (albumListView) {
-                var abListView = new albumListView();
+                // var abListView = new albumListView();
+                albumListView.show();
             });
         },
         reminder : function () {
