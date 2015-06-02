@@ -41,6 +41,26 @@ define(function (require) {
     }
 
     /**
+     * @description 占位符格式化
+     * @param {String} str 需要替换的模板
+     * @param {Object} params 参数
+     * @param {Boolean} isEncode 是否编码
+     * @eg demo("http://www.baidu.com?name={name}&age={age}&chanelid={chanelid}",{name:"demo",age:23,chanelid:100},false)
+     * @return {String} str 返回结果 http://www.baidu.com?name=demo&age=23&chanelid=100
+     */
+    function formatByVal (str, params, isEncode) {
+        if (typeof params == "object") {
+            for (var key in params) {
+                if (!$.exists(params[key]) || params[key] == "undefined" || params[key] == "null") {
+                    params[key] = "";
+                }
+                str = str.replace(new RegExp("\\{" + key + "\\}", "ig"), isEncode ? encodeURIComponent(params[key]) : params[key]);
+            }
+        }
+        return str.replace(/\{\w*\}/ig, "");
+    },
+
+    /**
      * 公用同步数据方法，重写model默认sync方法
      * @param  {[type]} method  [description]
      * @param  {[type]} model   [description]
@@ -48,9 +68,13 @@ define(function (require) {
      * @return {[type]}         [description]
      */
     function sync (method, model, options) {
+        var url = model.url.indexOf('http') > -1 ? model.url : getRoot(model.url);
+
+        url = formatByVal(url, options.data);
+
         var params = _.extend({
             type : 'GET',
-            url : model.url.indexOf('http') > -1 ? model.url : getRoot(model.url),
+            url : url,
             processData : false,
             xhrFields : {
                 withCredentials : true
