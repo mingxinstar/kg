@@ -12,11 +12,9 @@ define(function (require) {
 
     var kdModel = backbone.Model.extend({
         id : 1,
-        url : '/crm/get_storage',
+        url : 'get_storage',
         localStorage : new localStorage("kd-info"),
         initialize : function () {
-            core.debug('kdModel initialize');
-
             var storageData = this.localStorage.find(this);
             if (storageData) {
                 this.defaults = storageData;
@@ -41,7 +39,7 @@ define(function (require) {
             type = type || 'user';
 
             var key = '_id',
-                currData = thsi.get('curr');
+                currData = this.get('curr');
 
             if (type === 'class') {
                 key = 'class_id';
@@ -49,7 +47,7 @@ define(function (require) {
                 key = 'kg_id';
             }
 
-            return this.get(curr[key]);
+            return this.get(currData[key]);
         },
         /**
          * 获取当前用户的ID
@@ -72,6 +70,8 @@ define(function (require) {
          * @return {Boolean}         [description]
          */
         isTeacher : function (user_id) {
+            user_id = user_id || this.getUserId();
+
             var teachers = this.getCurrData('kg').teacher_ids;
 
             return teachers.indexOf(user_id) > -1;

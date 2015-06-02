@@ -5,7 +5,8 @@ require.config({
         'zepto'                 : 'libs/zepto',
         'underscore'            : 'libs/underscore',
         'template'              : 'libs/template',
-        'text'                  : 'libs/text'
+        'text'                  : 'libs/text',
+        'lazyload'              : 'libs/lazyload'
     },
     shim : {
         'backbone' : {

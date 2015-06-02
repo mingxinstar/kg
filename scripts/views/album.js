@@ -11,12 +11,15 @@ define(function (require) {
         template = require('template'),
 
         core = require('base/core'),
-        albutModel = require('models/album'),
+        albumModel = require('models/album'),
         albumTemplate = require('text!templates/album/list.html');
 
     var albumView = backbone.View.extend({
         tagName : 'li',
-        model : albutModel,
+        model : albumModel,
+        initialize : function () {
+            core.debug('initialize albumView');
+        },
         render : function () {
             this.$el.html(template(albumTemplate, {data : this.model.toJSON()}));
 

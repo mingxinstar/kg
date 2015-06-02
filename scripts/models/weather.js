@@ -10,7 +10,7 @@ define(function (require) {
         core =require('base/core');
 
     var weatherModel = backbone.Model.extend({
-        url : '/crm/get_bdtq/上海',
+        url : 'get_bdtq/上海',
         sync : core.sync,
         initialize : function () {
             // core.debug('weatherModel initialize');

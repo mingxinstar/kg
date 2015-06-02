@@ -8,10 +8,11 @@
 define(function (require) {
     var backbone = require('backbone'),
         $ = require('zepto'),
+        lazyload = require('lazyload'),
 
         core = require('base/core'),
         kd = require('models/kd'),
-        albumView = require('views/album'),
+        albumView = kd.isTeacher() ? require('views/albumTeacher') : require('views/album'),
         albumList = require('collections/albumList');
 
     var albumListView = backbone.View.extend({
@@ -25,12 +26,15 @@ define(function (require) {
             this.$list = this.$('ul');
 
             // 绑定collection
-            this.listenTo(this.collection, 'reset', this.render);
+            this.listenTo(this.collection, 'add', this.addOne);
 
             // 绑定滚动事件
-            this.$content.on('scroll', this.handleScroll);
+            var that = this;
+            this.$content.on('scroll', function (e) {
+                that.handleScroll();
+            });
 
-            this.collection.fetch({reset : true});
+            this.collection.load();
         },
         /**
          * 显示当前面板
@@ -39,17 +43,24 @@ define(function (require) {
         show : function () {
             this.$el.addClass('show-app-view');
         },
-        render : function () {
-            core.debug(this.collection.toJSON());
+        addOne : function (model) {
+            var view = new albumView({model : model});
 
-            this.collection.each(function (model) {
-                var view = new albumView({model : model});
+            this.$content.find('ul').append(view.render().$el);
 
-                this.$content.find('ul').append(view.render().$el);
-            }, this);
+            this.$content.find('.album-lazy').lazyload({
+                container : this.$content
+            });
         },
         handleScroll : function (e) {
-            core.debug('scroll : ', e, $(this).height(), $(this).scrollTop());
+            var contentH = this.$el.height(),
+                listH = this.$('ul').height(),
+                scrollTop = this.$content.scrollTop();
+
+            if (contentH + scrollTop + 500 > listH) {
+                core.debug('load more');
+                this.collection.load();
+            }
         }
     });
 

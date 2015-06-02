@@ -5,7 +5,7 @@
     </a>
     <div>
         <p class="color-blue fa-sz-30"><%=teacher.name%></p>
-        <p class="fa-sz-20"><%=core.formatTime(data.ts, "yyyy-MM-dd hh:mm")%></p>
+        <p class="fa-sz-20"><%=core.formatTime(data.ts*1000, "yyyy-MM-dd hh:mm")%></p>
     </div>
     <% if (isSelf) { %>
         <i class="fa fa-trash-o fa-4x"></i>
@@ -28,9 +28,9 @@
 <div class="album-pics-area clearfix">
     <% for (var i = 0, l = data.pics.length;  i < l; i++) { %>
         <% if ((i+1)%3 === 0) { %>
-            <img class="trd-img" src="<%=core.getImg(data.pics[i])%>" alt="">
+            <img class="album-lazy trd-img" data-original="<%=core.getImg(data.pics[i])%>" width="200" height="200" alt="">
         <% } else { %>
-            <img src="<%=core.getImg(data.pics[i])%>" alt="">
+            <img class="album-lazy" data-original="<%=core.getImg(data.pics[i])%>" width="200" height="200" alt="">
         <% } %>
     <% } %>
 </div>

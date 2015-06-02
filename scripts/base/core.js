@@ -6,7 +6,7 @@
  */
 
 define(function (require) {
-    var backbone = require('backbone'),
+    var _ = require('underscore'),
         config = require('base/config');
 
     /**
@@ -18,7 +18,7 @@ define(function (require) {
     function getRoot (url, type) {
         type = type || 'api';
 
-        return 'http://'+config.root[type]+url;
+        return 'http://'+config.root[type]+(type === api ? '/crm':'')+'/'+url;
     }
 
     /**
@@ -51,14 +51,14 @@ define(function (require) {
     function formatByVal (str, params, isEncode) {
         if (typeof params == "object") {
             for (var key in params) {
-                if (!$.exists(params[key]) || params[key] == "undefined" || params[key] == "null") {
+                if (!_.has(params, key) || params[key] == "undefined" || params[key] == "null") {
                     params[key] = "";
                 }
                 str = str.replace(new RegExp("\\{" + key + "\\}", "ig"), isEncode ? encodeURIComponent(params[key]) : params[key]);
             }
         }
         return str.replace(/\{\w*\}/ig, "");
-    },
+    }
 
     /**
      * 公用同步数据方法，重写model默认sync方法
@@ -68,8 +68,13 @@ define(function (require) {
      * @return {[type]}         [description]
      */
     function sync (method, model, options) {
-        var url = model.url.indexOf('http') > -1 ? model.url : getRoot(model.url);
+        var url = mode.url ? model.url : options.url;
 
+        if (!url)  {
+            return;
+        }
+
+        url = url.indexOf('http') > -1 ? url : getRoot(url);
         url = formatByVal(url, options.data);
 
         var params = _.extend({
@@ -80,6 +85,10 @@ define(function (require) {
                 withCredentials : true
             }
         }, options);
+
+        if (params.type.toLowerCase() === 'get') {
+            params.data = null;
+        }
 
         return $.ajax(params);
     }
