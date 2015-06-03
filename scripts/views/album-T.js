@@ -21,7 +21,6 @@ define(function (require) {
             // 执行原型的初始化方法
             albumView.prototype.initialize.apply(this);
 
-            // core.debug('initialize albumTeacherView');
             this.listenTo(this.model, 'destroy', this.removeAlbum);
 
             this.listenTo(this.model, 'change:desc', this.changeDesc);

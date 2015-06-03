@@ -15,44 +15,46 @@ define(function (require) {
             'log'      : 'log' //操作记录
         },
         index : function () {
-            console.log('index');
             require(['views/index'], function (indexView) {
                 indexView.render();
             });
         },
         album : function () {
-            console.log('album');
 
             require(['views/albumList'], function (albumListView) {
                 // var abListView = new albumListView();
-                albumListView.show();
+                changeView('album')
             });
         },
         reminder : function () {
-            console.log('reminder');
+
+            require(['views/reminderList-T'], function (reminderListView) {
+                changeView('reminder');
+            });
         },
         checkin : function () {
-            console.log('checkin');
         },
         flowers : function () {
-            console.log('flowers');
         },
         msg : function () {
-            console.log('msg');
         },
         contacts : function () {
-            console.log('contacts');
         },
         register : function () {
-            console.log('register');
         },
         feedback : function () {
-            console.log('feedback');
         },
         log : function () {
-            console.log('log');
         }
     });
-
+    
+    /**
+     * 切换到对应的view
+     * @param  {String} viewName view的名称
+     */
+    function changeView (viewName) {
+        $('#app-wrap .app-view-'+viewName).addClass('show-app-view');
+    }
+    
     return WorkSpace;
 });

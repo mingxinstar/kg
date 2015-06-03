@@ -42,7 +42,6 @@ define(function (require) {
             // core.debug('index render : ', this.model.toJSON());
             this.$('.index-header-avatar img').attr('src', core.getAvatar(this.model.getUserId()));
 
-
             return this;
         },
         renderWeather : function () {

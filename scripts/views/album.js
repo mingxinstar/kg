@@ -21,8 +21,6 @@ define(function (require) {
             'touchstart img' : 'setRead'
         },
         initialize : function () {
-            core.debug('initialize albumView');
-
             this.listenTo(this.model, 'change:reader_count', this.addCount);
         },
         render : function () {

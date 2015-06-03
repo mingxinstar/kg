@@ -12,7 +12,7 @@ define(function (require) {
 
         core = require('base/core'),
         kd = require('models/kd'),
-        albumView = kd.isTeacher() ? require('views/albumTeacher') : require('views/album'),
+        albumView = kd.isTeacher() ? require('views/album-T') : require('views/album'),
         albumList = require('collections/albumList');
 
     var albumListView = backbone.View.extend({
