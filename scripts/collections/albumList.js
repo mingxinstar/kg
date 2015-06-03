@@ -9,10 +9,12 @@ define(function (require) {
     var backbone = require('backbone'),
         _ = require('underscore'),
 
-        core = require('base/core');
+        core = require('base/core'),
+        albumModel = require('models/album');
 
     var albumList = backbone.Collection.extend({
-        url : core.getRoot('/crm/album/list/10/{page}'),
+        url : core.getRoot('album/list/10/{page}'),
+        model : albumModel,
         sync : core.sync,
         currPage : 1,
         isLastPage : false, //是否最后一页

@@ -18,7 +18,7 @@ define(function (require) {
     function getRoot (url, type) {
         type = type || 'api';
 
-        return 'http://'+config.root[type]+(type === api ? '/crm':'')+'/'+url;
+        return 'http://'+config.root[type]+(type === 'api' ? '/crm':'')+'/'+url;
     }
 
     /**
@@ -68,7 +68,18 @@ define(function (require) {
      * @return {[type]}         [description]
      */
     function sync (method, model, options) {
-        var url = mode.url ? model.url : options.url;
+        var params = _.extend({
+            type : 'GET',
+            url : url,
+            processData : false,
+            // contentType : 'application/json',
+            xhrFields : {
+                withCredentials : true
+            }
+        }, options);
+
+        // 处理url，get请求填充url上的数据
+        var url = typeof model.url === 'string' ? model.url : options.url;
 
         if (!url)  {
             return;
@@ -76,21 +87,23 @@ define(function (require) {
 
         url = url.indexOf('http') > -1 ? url : getRoot(url);
         url = formatByVal(url, options.data);
-
-        var params = _.extend({
-            type : 'GET',
-            url : url,
-            processData : false,
-            xhrFields : {
-                withCredentials : true
-            }
-        }, options);
+        params.url = url;
 
         if (params.type.toLowerCase() === 'get') {
             params.data = null;
+        } else {
+            params.data = JSON.stringify({data : params.data});
         }
 
         return $.ajax(params);
+    }
+
+    /**
+     * 获取数据
+     * @param  {[type]} options [description]
+     */
+    function getResult (options) {
+        return sync('', {}, options);
     }
 
     /**
@@ -186,6 +199,7 @@ define(function (require) {
         getImg     : getImg,
         formatTime : formatTime,
         loadCss    : loadCss,
-        setCookie  : setCookie
+        setCookie  : setCookie,
+        getResult  : getResult
     };
  });
