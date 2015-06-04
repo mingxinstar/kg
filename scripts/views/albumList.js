@@ -19,10 +19,11 @@ define(function (require) {
         el : '.app-view-album',
         collection : albumList,
         initialize : function () {
+            // 加载对应的css文件
             core.loadCss('album');
 
             this.$content = this.$('.app-view-content');
-            this.$content.html('<ul></ul>');
+            this.$content.html('<ul class="common-ul"></ul>');
             this.$list = this.$('ul');
 
             // 绑定collection
@@ -46,7 +47,7 @@ define(function (require) {
         addOne : function (model) {
             var view = new albumView({model : model});
 
-            this.$content.find('ul').append(view.render().$el);
+            this.$list.append(view.render().$el);
 
             this.$content.find('.album-lazy').lazyload({
                 container : this.$content

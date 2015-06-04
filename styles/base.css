@@ -128,3 +128,22 @@ html, body {
     background-color: #F5F5F5;
     overflow: scroll;
 }
+
+/*页面通用列表样式*/
+.common-ul {
+    padding: 0 0 120px;
+}
+.common-ul li {
+    width: 640px;
+    overflow: hidden;
+    padding: 20px;
+    margin: 20px;
+    background-color: #FFF;
+    -webkit-transition: margin 0.5s, padding 0.5s 0.3s, height 0.5s linear 0.3s;
+    -o-transition: margin 0.5s, padding 0.5s 0.3s, height 0.5s linear 0.3s;
+    transition: margin 0.5s, padding 0.5s 0.3s, height 0.5s linear 0.3s;
+}
+.common-ul .remove-li {
+    margin: 0 0 0 -680px;
+    padding: 0;
+}

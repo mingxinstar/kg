@@ -30,7 +30,7 @@ define(function (require) {
          */
         removeAlbum : function () {
             this.$el.css('height', this.$el.height());
-            this.$el.addClass('remove-album');
+            this.$el.addClass('remove-li');
 
             var that = this;
             setTimeout(function () {

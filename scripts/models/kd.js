@@ -75,6 +75,39 @@ define(function (require) {
             var teachers = this.getCurrData('kg').teacher_ids;
 
             return teachers.indexOf(user_id) > -1;
+        },
+        /**
+         * 获取称呼
+         * @param  {Number} relation 关系代表的数字
+         */
+        getCall : function (relation) {
+            var call = '';
+
+            switch (relation) {
+                case 0 :
+                    call = '妈妈';
+                    break;
+                case 1 :
+                    call = '爸爸';
+                    break;
+                case 2 :
+                    call = '爷爷';
+                    break;
+                case 3 :
+                    call = '奶奶';
+                    break;
+                case 4 :
+                    call = '叔叔';
+                    break;
+                case 5 :
+                    call = '阿姨';
+                    break;
+                case 6 :
+                    call = '其他';
+                    break;
+            }
+
+            return call;
         }
     });
 
