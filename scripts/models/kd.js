@@ -77,6 +77,21 @@ define(function (require) {
             return teachers.indexOf(user_id) > -1;
         },
         /**
+         * 获取学生列表数据
+         * @return {Array} 学生数据
+         */
+        getChildren : function () {
+            var childIds = this.getCurrData('class').child_ids,
+                childrenAry = [];
+
+            var that = this;
+            childIds.forEach(function (childId, index) {
+                childrenAry.push(that.get(childId));
+            });
+
+            return childrenAry;
+        },
+        /**
          * 获取称呼
          * @param  {Number} relation 关系代表的数字
          */

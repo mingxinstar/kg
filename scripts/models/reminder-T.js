@@ -8,21 +8,33 @@
 define(function (require) {
     var backbone = require('backbone'),
 
-        core = require('base/core');
+        core = require('base/core'),
+        kd = require('models/kd');
 
     var reminderModel = backbone.Model.extend({
         url : 'teacher/reminds/process',
-        update : function (reply) {
+        sync : core.sync,
+        setRead : function (reply) {
             reply = reply || '已阅';
 
-            this.save('audit', 1, {
-                url : this.url,
-                type : 'POST',
-                data : {
-                    remind_id : this.get('_id'),
-                    reply : reply
+            var data = {
+                    audit : 1,
+                    readers : [{
+                        reply : reply,
+                        teacher_id : kd.getUserId(),
+                        ts : Math.round(new Date().getTime()/1000)
+                    }]
+                },
+                options = {
+                    url : this.url,
+                    type : 'POST',
+                    data : {
+                        remind_id : this.get('_id'),
+                        reply : reply
+                    }
                 }
-            });
+
+            this.save(data, options);
         }
     });
 

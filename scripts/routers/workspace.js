@@ -20,19 +20,19 @@ define(function (require) {
             });
         },
         album : function () {
-
             require(['views/albumList'], function (albumListView) {
-                // var abListView = new albumListView();
                 changeView('album')
             });
         },
         reminder : function () {
-
             require(['views/reminderList-T'], function (reminderListView) {
                 changeView('reminder');
             });
         },
         checkin : function () {
+            require(['views/checkin-T'], function () {
+                changeView('checkin');
+            });
         },
         flowers : function () {
         },

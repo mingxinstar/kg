@@ -42,7 +42,20 @@ define(function (require) {
          * @param  {String} pic_key 图片key值
          */
         delPic : function (pic_key) {
+            var pics = this.get('pics');
+
+            pics.splice(pics.indexOf(pic_key), 1);
+
+            // 触发模型内的删除图片事件 
+            this.trigger('delPic', pic_key);
             
+            this.save('pics', pics, {
+                url : this.urls.delPic,
+                data : {
+                    album_id : this.get('_id'),
+                    pic_key : pic_key
+                }
+            });
         },
         /**
          * 修改描述

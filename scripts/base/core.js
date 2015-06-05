@@ -112,7 +112,7 @@ define(function (require) {
      * @return {String}     用户头像地址
      */
     function getAvatar (_id) {
-        return getRoot('/avatar/'+_id, 'cdnAvatar');
+        return getRoot('avatar/'+_id, 'cdnAvatar');
     }
 
     /**
@@ -124,7 +124,7 @@ define(function (require) {
     function getImg (key, type) {
         type = type || 's';
 
-        return getRoot('/'+key+'-'+type, 'cdnAvatar');
+        return getRoot(key+'-'+type, 'cdnAvatar');
     }
 
     /**
@@ -134,6 +134,7 @@ define(function (require) {
      * @return {String}        字符串
      */
     function formatTime (time,format) {
+        // format = format || "yyyy-MM-dd hh:mm";
         format = format || "yyyy-MM-dd hh:mm:ss";
 
         var datetime = time ? new Date(time) : new Date(),
@@ -160,6 +161,38 @@ define(function (require) {
         return format;
     }
 
+    /**
+     * 获取规定格式的时间表示法
+     * @param  {Number} time 时间戳
+     * @return {String}      今天发布的：今天11：00
+     *                       昨天发布的： 昨天11：00
+     *                       本年超过昨天发布的：  X月X日11：00
+     *                       非本年发布的：  XXXX年X月X日11：00
+     */
+    function getTime (time) {
+        var dateTime = time ? new Date(time) : new Date(),
+            now = new Date(),
+            yesterDay = new Date(now.getTime()-86400000),
+            dateTimeOP = formatTime(dateTime, 'yyyy年MM月dd日 hh:mm'),
+            nowOP = formatTime(now, 'yyyy年MM月dd日 hh:mm'),
+            yesterDayOP = formatTime(yesterDay, 'yyyy年MM月dd日 hh:mm');
+
+        if (dateTimeOP.split(' ')[0] === nowOP.split(' ')[0]) {
+            return '今天 '+dateTimeOP.split(' ')[1];
+        }
+
+        if (dateTimeOP.split(' ')[0] === yesterDayOP.split(' ')[0]) {
+            return '昨天 '+dateTimeOP.split(' ')[1];
+        }
+
+        if (dateTimeOP.slice(0, 4) === nowOP.slice(0, 4)) {
+            return dateTimeOP.slice(5);
+        }
+
+        return dateTimeOP;
+    }
+
+
     var loadedCss = [];
     /**
      * 加载css文件
@@ -174,6 +207,10 @@ define(function (require) {
 
         var $head = $('head'),
             path = '/styles/'+file+'.css';
+
+        if (!isRelease()) {
+            path += ('?_='+new Date().getTime());
+        }
 
         $head.append('<link rel="stylesheet" href="'+path+'" />')
     }
@@ -201,6 +238,7 @@ define(function (require) {
         formatTime : formatTime,
         loadCss    : loadCss,
         setCookie  : setCookie,
-        getResult  : getResult
+        getResult  : getResult,
+        getTime    : getTime
     };
  });

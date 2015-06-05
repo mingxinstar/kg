@@ -15,13 +15,29 @@ define(function (require) {
 
     var reminderView = backbone.View.extend({
         tagName : 'li',
+        events : {
+            'touchstart .btn' : 'setRead'
+        },
         initialize : function () {
-
+            // 数据变更时进行修改视图
+            this.listenTo(this.model, 'change', this.render);
         },
         render : function () {
-            this.$el.html(template(listTmpl, {data : this.model.toJSON()}))
+            var data = this.model.toJSON();
+
+            this.$el.html(template(listTmpl, {data : data}));
+
+            if (data.audit === 1) {
+                this.$el.addClass('reminder-readed');
+            }
 
             return this;
+        },
+        /**
+         * 设置成已读
+         */
+        setRead : function () {
+            this.model.setRead();
         }
     });
 

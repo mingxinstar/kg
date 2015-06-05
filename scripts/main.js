@@ -2,11 +2,12 @@ require.config({
     paths : {
         'backbone'              : 'libs/backbone/backbone',
         'backbone.localStorage' : 'libs/backbone/localStorage',
-        'zepto'                 : 'libs/zepto',
+        'zepto'                 : 'libs/zepto/zepto',
+        'template'              : 'libs/zepto/template',
+        'lazyload'              : 'libs/zepto/lazyload',
+        'touch'                 : 'libs/zepto/touch',
         'underscore'            : 'libs/underscore',
-        'template'              : 'libs/template',
-        'text'                  : 'libs/text',
-        'lazyload'              : 'libs/lazyload'
+        'text'                  : 'libs/text'
     },
     shim : {
         'backbone' : {
