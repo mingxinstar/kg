@@ -22,9 +22,28 @@ define(function (require) {
             this.$content.empty();
 
             this.render();
+
+            this.changeView();
         },
         render : function () {
             this.$content.html(baseTmpl);
+
+            this.$panel = this.$content.find('.checkin-content-panel');
+
+            core.debug('panel : ', $('.checkin-panel-today'));
+
+            return this;
+        },
+        changeView : function (viewName) {
+            viewName = viewName || 'today';
+
+            core.debug('changeView');
+
+            // if (1 > 2) {
+                require(['views/checkinToday-T'], function () {
+
+                });
+            // }
         }
     });
 
