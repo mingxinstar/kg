@@ -1,0 +1,60 @@
+/**
+ * 日期选择器样式
+ *
+ * @author mingxin.huang
+ * @update 2015.06.13
+ */
+
+.datepicker-area {
+    width: 100%;
+}
+
+.datepicker-area .datepicker-title {
+    height: 60px;
+    line-height: 60px;
+    color: #FFF;
+    text-align: center;
+}
+
+.datepicker-area table {
+    width: 100%;
+}
+
+.datepicker-area thead {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #DDD;
+}
+
+.datepicker-area tbody {
+    
+}
+
+.datepicker-area tbody td {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+    border: 2px solid #DDD;
+    text-align: right;
+}
+
+.datepicker-area .date-selected {
+    position: relative;
+    color: #FFF;
+}
+
+.datepicker-area .date-selected-blue {
+    background-color: #62D7FF;
+}
+
+.datepicker-area .date-selected-green {
+    background-color: #73A839;
+}
+
+.datepicker-area .date-selected-orange {
+    background-color: #DD5600;
+}
+
+.datepicker-area .date-selected-red {
+    background-color: #E1363C;
+}

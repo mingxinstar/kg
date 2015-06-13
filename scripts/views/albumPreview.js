@@ -52,7 +52,6 @@ define(function (require) {
             this.remove();
         },
         next : function () {
-            core.debug('next');
             var index = this.currIndex + 1;
 
             if (index >= this.model.get('pics').length) {
@@ -66,7 +65,6 @@ define(function (require) {
             this.setPagin();
         },
         prev : function () {
-            core.debug('prev');
             var index = this.currIndex - 1;
 
             if (index < 0) {
@@ -93,8 +91,6 @@ define(function (require) {
          * 删除图片
          */
         delPic : function () {
-            core.debug('del pic');
-
             var pics = this.model.get('pics'),
                 picKey = pics[this.currIndex];
 
@@ -105,8 +101,6 @@ define(function (require) {
          * @return {[type]} [description]
          */
         rmPic : function (pic_key) {
-            core.debug('preview rmPic : ', pic_key);
-
             this.currIndex = this.currIndex === 0 ? 0 : this.currIndex-1;
 
             if (this.model.get('pics').length === 0) {

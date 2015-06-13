@@ -36,8 +36,6 @@ define(function (require) {
          * 设置已读
          */
         setRead : function () {
-            core.debug('setRead');
-
             this.model.setRead();
         },
         /**
@@ -50,8 +48,6 @@ define(function (require) {
          * 删除图片
          */
         rmPic : function (pic_key) {
-            core.debug('rmPic : ', pic_key);
-
             this.$('img[data-key='+pic_key+']').remove();
 
             this.$('.album-pics-area img').each(function (index, img) {

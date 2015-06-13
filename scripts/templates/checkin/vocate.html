@@ -1,0 +1,28 @@
+<%var core = require("base/core"), kd = require("models/kd"), child = kd.get(data.child_id), parent = kd.get(data.parent_id); %>
+<div class="vocate-list-left">
+    <div class="ava ava-sm">
+        <img src="<%=core.getAvatar(data.child_id)%>" alt="" />
+    </div>
+    <span class="fa-sz-20 <%=child.sex === 0 ? "color-pink" : "color-blue"%>"><%=child.name%></span>
+</div>
+<div class="vocate-list-right fa-sz-24">
+    <p><span class="label">类型</span>: <span><%=data.reasonTip%></span><span class="vocate-time"><%=core.getTime(data.ts*1000)%></span></p>
+    <p><span class="label">原因</span>: <span><%=data.title%></span></p>
+    <p><span class="label">请假人</span>: <span><%=kd.getCall(parent.relation)%></span></p>
+    <p>
+        <span class="label">日期</span>: 
+        <span>
+            <% for (var i = 0; i < data.date.length; i++) { %>
+                <%=data.date[i].slice(0, 10)%>  
+            <% } %>
+        </span>
+    </p>
+    <p><span class="label">天数</span>: <span><%=data.date.length%></span></p>
+    <p class="vocate-tip">
+        <% if (data.audit) { var teacher = kd.get(data.audit);%>
+            <%=core.getTime(data.ts*1000)%> <%=teacher.name%> 审批
+        <% } else { %>
+            <a href="javascript:;" class="btn btn-success">确认</a>
+        <% } %>
+    </p>
+</div>

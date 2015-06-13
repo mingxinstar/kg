@@ -31,21 +31,17 @@ define(function (require) {
             this.model2.fetch();
         },
         render : function () {
-            // core.debug('avatar render');
-
             wrapView.closeAll();
 
             if (!this.model.hasChanged()) {
                 return this;
             }
 
-            // core.debug('index render : ', this.model.toJSON());
             this.$('.index-header-avatar img').attr('src', core.getAvatar(this.model.getUserId()));
 
             return this;
         },
         renderWeather : function () {
-            // core.debug('weather : ', this.model2.toJSON());
 
             this.$('.index-header-weather').html(template(weatherTmpl, {data : this.model2.toJSON()}));
         }

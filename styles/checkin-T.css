@@ -9,8 +9,16 @@
 
 }
 
-.app-view-checkin .app-view-nav {
+.app-view-checkin .common-ul {
+    padding: 0 0 200px;
+}
 
+.app-view-checkin > .app-view-content {
+    overflow: hidden;
+}
+
+.app-view-checkin .app-view-nav {
+    background-color: #FFF;
 }
 
 .app-view-checkin .app-view-nav li {
@@ -29,7 +37,7 @@
     text-align: center;
     border-right: 1px solid #DDD;
 }
-.app-view-checkin .app-view-nav span:last-child {
+.app-view-checkin .app-view-nav li:last-child span {
     border-right: none;
 }
 
@@ -38,8 +46,318 @@
     width: 300%;
     height: 100%;
 }
+
+.checkin-content-panel.show-vocate .checkin-panel-today {
+    margin-left: -720px;
+}
+
+.checkin-content-panel.show-report .checkin-panel-today {
+    margin-left: -1440px;
+}
+
+.checkin-content-panel.show-report .checkin-panel-vocate {
+    margin-left: -720px;
+}
+
 .checkin-content-panel > div {
     float: left;
+    width: 720px;
+    height: 100%;
+    overflow: scroll;
+    -webkit-transition: margin 0.3s;
+    -o-transition: margin 0.3s;
+    transition: margin 0.3s;
+}
+
+/*今日考勤部分样式*/
+.checkin-panel-today {
+    
+}
+
+.checkin-panel-today .date-picker-area {
+    height: 60px;
+    margin: 20px;
+    background-color: #FFF;
+}
+
+.checkin-panel-today .date-picker-area input {
+    width: 300px;
+    height: 60px;
+    line-height: 60px;
+    border-bottom: none;
+    margin: 0 0 0 20px;
+}
+
+.checkin-panel-today .date-picker-area i {
+    float: right;
+    line-height: 60px;
+    margin: 0 20px 0 0;
+}
+
+.checkin-panel-today li {
+    position: relative;
+}
+
+.checkin-panel-today li .fa-trash-o {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.checkin-panel-today .checkin-list-left {
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.checkin-panel-today .checkin-list-left span {
+    display: inline-block;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin: 10px 0 0;
+}
+
+.checkin-panel-today .checkin-list-right {
+    float: left;
+    width: 520px;
+}
+
+.checkin-panel-today .checkin-list-right p {
+    height: 36px;
+    line-height: 36px;
+}
+
+.checkin-panel-today .checkin-list-right .checkin-info-tip {
+    text-align: right;
+}
+
+.checkin-panel-today .checkin-list-right span {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    text-align: justify;
+}
+
+.checkin-panel-today .checkin-list-right span:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+}
+
+/*请假审核样式*/
+.checkin-panel-vocate {
+
+}
+
+.checkin-panel-vocate .vocate-passed {
+    color: #999;
+}
+
+.checkin-panel-vocate .vocate-list-left {
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.checkin-panel-vocate .vocate-list-left span {
+    display: inline-block;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    margin: 10px 0 0;
+}
+
+.checkin-panel-vocate .vocate-list-right {
+    float: left;
+    width: 520px;
+}
+
+.checkin-panel-vocate .vocate-list-right .vocate-tip {
+    text-align: right;
+}
+
+.checkin-panel-vocate .vocate-list-right span {
+    display: inline-block;
+}
+
+.checkin-panel-vocate .vocate-list-right .vocate-time {
+    float: right;
+}
+
+.checkin-panel-vocate .vocate-list-right .label {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    text-align: justify;
+}
+
+.checkin-panel-vocate .vocate-list-right .label:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+}
+
+/*考勤报告样式*/
+.checkin-panel-report {
+
+}
+
+.report-month-select-area {
+    width: 680px;
+    height: 70px;
+    line-height: 70px;
+    margin: 20px;
+}
+
+.report-month-select-area span {
+    float: left;
+    height: 70px;
+    line-height: 70px;
+    background-color: #FFF;
+    text-align: center;
+}
+
+.report-month-select-area .select-arrow {
+    width: 60px;
+}
+
+.report-month-select-area .select-month {
+    width: 550px;
+    margin: 0 5px;
+}
+
+.checkin-panel-report ul {
+    margin: 20px;
+    padding: 0 0 200px;
+}
+
+.checkin-panel-report li {
+    height: 80px;
+    line-height: 80px;
+    padding: 10px;
+}
+
+.checkin-panel-report li:nth-child(odd) {
+    background-color: #FFF;
+}
+
+.checkin-panel-report li > * {
+    float: left;
+}
+
+.checkin-panel-report li .ava {
+    margin: 0 20px 0 0;
+}
+
+.checkin-panel-report li .absence-count,
+.checkin-panel-report li .fa-chevron-right {
+    float: right;
+    margin: 0 0 0 10px;
+}
+
+.checkin-panel-report li .fa-chevron-right {
+    margin-top: 28px;
+}
+
+/*添加考勤样式*/
+.app-view-handler,
+.app-view-detail {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
+}
+
+.app-view-handler .app-view-content,
+.app-view-detail .app-view-content {
+    background-color: #FFF;
+}
+
+.app-view-handler ul {
+    padding: 0 0 150px;
+}
+
+.app-view-handler li {
+    float: left;
+    position: relative;
+    padding: 20px 30px;
+    outline: 1px solid #EFEFEF;
+}
+
+.app-view-handler li .fa-check {
+    position: absolute;
+    display: none;
+    right: 5px;
+    top: 5px;
+}
+
+.app-view-handler .selected .fa-check {
+    display: block;
+}
+
+.app-view-handler li div {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.app-view-handler li img {
+    width: 120px;
+    height: 120px;
+}
+
+.app-view-handler li span {
+    display: inline-block;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.app-view-handler .app-view-nav-bar a,
+.app-view-detail .app-view-nav-bar a {
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: #DDD;
+    text-align: center;
+    text-indent: 0;
+    color: #333;
+}
+
+.app-view-handler .app-view-nav-bar .btn-handle-confirm {
+    color: #FFF;
+    background-color:  #77B300;
+}
+
+.app-view-detail .app-view-nav-bar a {
+    width: 100%;
+}
+
+/*详细页样式*/
+.app-view-detail {
+
+}
+
+.app-view-detail .detai-tip-area {
+    margin: 20px 0;
+}
+
+.app-view-detail .detai-tip-area span {
+    float: left;
+    margin: 0 0 0 20px;
+}
+
+.app-view-detail .detail-info-area {
+    padding: 20px;
 }

@@ -228,17 +228,44 @@ define(function (require) {
         document.cookie = cname + "=" + cvalue + "; " + expires;
     }
 
+    /**
+     * 获取请假的理由
+     * @param  {Number} reason 类型
+     * @return {String}        [description]
+     */
+    function getCheckinReason (type) {
+        var reason = '';
+
+        switch (type) {
+            case 0 :
+                reason = '缺勤';
+                break;
+            case 1 : 
+                reason = '病假';
+                break;
+            case 2 :
+                reason = '事假';
+                break;
+            case 3 :
+                reason = '其他';
+                break;
+        }
+
+        return reason;
+    }
+
     return {
-        getRoot    : getRoot,
-        isRelease  : isRelease,
-        debug      : debug,
-        sync       : sync,
-        getAvatar  : getAvatar,
-        getImg     : getImg,
-        formatTime : formatTime,
-        loadCss    : loadCss,
-        setCookie  : setCookie,
-        getResult  : getResult,
-        getTime    : getTime
+        getRoot          : getRoot,
+        isRelease        : isRelease,
+        debug            : debug,
+        sync             : sync,
+        getAvatar        : getAvatar,
+        getImg           : getImg,
+        formatTime       : formatTime,
+        loadCss          : loadCss,
+        setCookie        : setCookie,
+        getResult        : getResult,
+        getTime          : getTime,
+        getCheckinReason : getCheckinReason
     };
  });

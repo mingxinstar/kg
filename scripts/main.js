@@ -17,7 +17,7 @@ require.config({
             exports : 'backbone.localStorage'
         },
         'zepto' : {
-            exports : '$'
+            exports : '$',
         },
         'underscore' : {
             exports : '_'

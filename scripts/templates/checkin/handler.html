@@ -1,0 +1,18 @@
+<% var core = require("base/core"); %>
+<div class="app-view-content">
+    <ul class="clearfix">
+        <% for (var i = 0, l = children.length; i < l; i++) { var child = children[i]; %>
+            <li data-id="<%=child._id%>">
+                <div>
+                    <img src="<%=core.getAvatar(child._id)%>" alt="" />
+                </div>
+                <span class="fa-sz-20 color-<%= child.sex === 0 ? "pink" : "blue"%>"><%=child.name%></span>
+                <i class="fa fa-check fa-4x color-red"></i>
+            </li>
+        <% } %>
+    </ul>
+</div>
+<nav class="app-view-nav-bar">
+    <a href="javascript:;" class="btn-handle-cancel">取消</a>
+    <a href="javascript:;" class="btn-handle-confirm">确定</a>
+</nav>

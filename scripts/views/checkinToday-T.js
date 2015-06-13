@@ -1,33 +1,43 @@
 /**
- * 教师今日考勤模块
+ * 当日考勤单个考勤view
  *
  * @author mingxin.huang
- * @update 2015.06.08
+ * @update 2015.06.10
  */
 
 define(function (require) {
     var backbone = require('backbone'),
-        $ = require('zepto'),
+        template = require('template'),
 
         core = require('base/core'),
-        checkinList = require('collections/checkinList-T'),
-        todayTmpl = require('text!templates/checkin/today.html');
+        kd = require('models/kd'),
+        checkinModel = require('models/checkin'),
+        todayTmpl = require('text!templates/checkin/todayList.html');
 
-    var todayView = backbone.View.extend({
-        el : '.checkin-panel-today',
-        collection : checkinList,
+
+    var checkinTodayView = backbone.View.extend({
+        tagName : 'li',
+        model : checkinModel,
+        events : {
+            'tap .fa-trash-o' : 'del'
+        },
         initialize : function () {
-            this.listenTo(this.collection, 'reset',this.render);
 
-            core.debug('initialize todayTmpl : ', this.$el, $('.checkin-panel-today'));
-
-            this.$el.html(todayTmpl);
         },
         render : function () {
+            var data = this.model.toJSON();
+            data.reasonTip = core.getCheckinReason(data.reason);
+
+            this.$el.html(template(todayTmpl, {data : data}));
 
             return this;
+        },
+        del : function () {
+            this.model.del();
+
+            this.remove();
         }
     });
 
-    return new todayView();
+    return checkinTodayView;
 });

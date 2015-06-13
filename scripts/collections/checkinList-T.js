@@ -14,18 +14,35 @@ define(function (require) {
     var checkinList = backbone.Collection.extend({
         url : 'class/absence/{date}',
         sync : core.sync,
+        todayAbsence : [], //今日缺勤
         initialize : function () {
             this.load();
         },
         load : function (date) {
-            date = date || core.formatTime('yyyy-MM-dd');
+            date = date || core.formatTime(null, 'yyyy-MM-dd');
+
+            var fn = function (model, res, params) {
+                if (params.data.date !== core.formatTime(null, 'yyyy-MM-dd')) {
+                    return;
+                }
+
+                model.todayAbsence = res.data;
+            };
 
             this.fetch({
                 data : {
                     date : date
                 },
-                reset : true
+                reset : true,
+                success : fn
             });
+        },
+        // 返回今日的缺勤学生
+        getTodayAbsence : function () {
+            return this.todayAbsence;
+        },
+        parse : function (res) {
+            return res.data;
         }
     });
 
