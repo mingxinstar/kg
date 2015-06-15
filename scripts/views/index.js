@@ -25,9 +25,6 @@ define(function (require) {
             this.listenTo(this.model, 'change', this.render);
             this.listenTo(this.model2, 'change', this.renderWeather);
 
-            // 测试用，设置身份
-            core.setCookie('_k_openid', 'ox3k3t22bS1z-9IXemNz26Bicc7s', 30);
-            // this.model.fetch();
             this.model2.fetch();
         },
         render : function () {
@@ -37,7 +34,8 @@ define(function (require) {
                 return this;
             }
 
-            this.$('.index-header-avatar img').attr('src', core.getAvatar(this.model.getUserId()));
+            this.$('.view-index-header img').attr('src', core.getAvatar(this.model.getUserId()));
+            this.$('.view-index-header a').attr('href', '#user/'+this.model.getUserId());
 
             return this;
         },
@@ -47,8 +45,5 @@ define(function (require) {
         }
     });
 
-    var currIndexView = new indexView();
-
-    // exports = currIndexView;
-    return currIndexView;
+    return new indexView();
 });

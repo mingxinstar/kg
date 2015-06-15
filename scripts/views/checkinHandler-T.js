@@ -8,11 +8,13 @@
 define(function (require) {
     var backbone = require('backbone'),
         template = require('template'),
+        _ = require('underscore'),
 
         core = require('base/core'),
         kd = require('models/kd'),
         checkinModel = require('models/checkin'),
         checkinCollection = require('collections/checkinList-T'),
+        todayListView = require('views/checkinTodayList-T'),
         handlerTmpl = require('text!templates/checkin/handler.html');
 
     var checkinHandlerView = backbone.View.extend({
@@ -24,12 +26,20 @@ define(function (require) {
             'tap .btn-handle-confirm' : 'confirm'
         },
         initialize : function () {
+            this.model = new checkinModel();
         },
         render : function () {
             var allChildren = kd.getChildren(),
-                absencChildren = checkinCollection.getTodayAbsence();
+                absencChildren = checkinCollection.getTodayAbsence(),
+                children = _.reject(allChildren, function (child) {
+                    var sameChild = _.find(absencChildren, function (abChild) {
+                        return abChild.child_id === child._id;
+                    });
 
-            this.$el.html(template(handlerTmpl, {children : allChildren}));
+                    return !!sameChild;
+                });
+
+            this.$el.html(template(handlerTmpl, {children : children}));
 
             return this;
         },
@@ -53,9 +63,9 @@ define(function (require) {
                 return;
             }
 
-            var cm = new checkinModel();
-
-            cm.create(childIds);
+            this.model.create(childIds, function () {
+                todayListView.refreshToday();
+            });
 
             this.close();
         }

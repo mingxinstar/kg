@@ -13,7 +13,7 @@ define(function (require) {
         albumModel = require('models/album');
 
     var albumList = backbone.Collection.extend({
-        url : core.getRoot('album/list/10/{page}'),
+        url : 'album/list/10/{page}',
         model : albumModel,
         sync : core.sync,
         currPage : 1,

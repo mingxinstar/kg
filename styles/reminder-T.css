@@ -27,20 +27,6 @@
     margin: 0 10px 0 0;
     text-align: center;
 }
-.reminder-content .reminder-content-left div {
-    width: 90px; 
-    height: 90px; 
-    margin: auto;
-    overflow: hidden; 
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -o-border-radius: 50%;
-    border-radius: 50%;
-}
-.reminder-content .reminder-content-left img {
-    width: 90px;
-    height: 90px;
-}
 .reminder-content .reminder-content-left span {
 
 }

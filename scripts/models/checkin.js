@@ -23,7 +23,7 @@ define(function (require) {
          * 创建新的考勤
          * @return {[type]} [description]
          */
-        create : function (childIds) {
+        create : function (childIds, callback) {
             var today = core.formatTime(null, 'yyyy-MM-dd'),
                 data = {
                     date : today,
@@ -33,7 +33,8 @@ define(function (require) {
             this.save(data, {
                 type : 'POST',
                 url : this.urls.create,
-                data : data
+                data : data,
+                success : callback
             });
         },
         /**

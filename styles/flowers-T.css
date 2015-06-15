@@ -1,0 +1,160 @@
+/**
+ * 红花模块样式
+ *
+ * @author mingxin.huang
+ * @update 2015.06.13
+ */
+
+.app-view-flowers {
+
+}
+
+.app-view-flowers > .app-view-content {
+    overflow: hidden;
+}
+
+/*内容区域样式*/
+.app-content-panel.show-week .flowers-panel-today {
+    margin-left: -720px;
+}
+
+.app-content-panel.show-month .flowers-panel-today {
+    margin-left: -1440px;
+}
+
+.app-content-panel.show-month .flowers-panel-week {
+    margin-left: -720px;
+}
+
+/*今日红花榜样式*/
+.flowers-panel-today {
+
+}
+
+.flowers-panel-today > ul > li {
+    margin: 20px;
+}
+
+.flowers-panel-today .today-list-left {
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.flowers-panel-today .today-list-left span {
+    display: inline-block;
+    width: 100%;
+    margin: 10px 0 0;
+    text-align: center;
+}
+
+.flowers-panel-today .today-list-right {
+    float: left;
+    width: 516px;
+    border: 2px solid #DDD;
+}
+
+.flowers-panel-today .today-children-list {
+    
+}
+
+.flowers-panel-today .today-children-list li {
+    float: left;
+    position: relative;
+    margin: 20px;
+}
+
+.flowers-panel-today .today-children-list .fa-times-circle {
+    position: absolute;
+    display: none;
+    right: -10px;
+    top: -10px;
+}
+
+.flowers-panel-today .today-children-list.show-del .fa-times-circle {
+    display: block;
+}
+
+.flowers-panel-today .today-children-list .btn-del-child {
+    width: 100px;
+    height: 120px;
+    line-height: 150px;
+    border: 2px solid #DDD;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.flowers-panel-today .today-children-list li span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0 0;
+}
+
+/*红花列表样式*/
+.flowers-list-ul {
+    padding: 0 0 200px;
+}
+
+.flowers-list-ul li {
+    height: 110px;
+    line-height: 110px;
+    padding: 10px;
+}
+
+.flowers-list-ul li:nth-child(odd) {
+    background-color: #FFF;
+}
+
+.flowers-list-ul li > div {
+    float: left;
+}
+
+.flowers-list-ul .flowers-child-ava {
+    margin: 0 20px 0 0;
+}
+
+.flowers-list-ul .flowers-child-ava span {
+    display: block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.flowers-list-ul li > span {
+    float: right;
+}
+
+/*添加红花样式*/
+.app-view-flower-add ul {
+    padding: 0 0 150px;
+}
+
+.app-view-flower-add li {
+    float: left;
+    position: relative;
+    padding: 20px 30px;
+    outline: 1px solid #EFEFEF;
+}
+
+.app-view-flower-add li .fa-check {
+    position: absolute;
+    display: none;
+    right: 5px;
+    top: 5px;
+}
+
+.app-view-flower-add .selected .fa-check {
+    display: block;
+}
+
+.app-view-flower-add li span {
+    display: inline-block;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+}

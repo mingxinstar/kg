@@ -1,0 +1,80 @@
+'
+<% var core = require("base/core"), kd = require("models/kd"); %>
+<div class="app-view-content fa-sz-24">
+    <ul>
+        <li class="user-info-ava clearfix">
+            <span class="user-info-label">头像</span>
+            <div class="user-info-edit">
+                <div class="ava"><img src="<%=core.getAvatar(data._id)%>" alt=""></div>
+                <i class="fa fa-chevron-right"></i>
+            </div>
+        </li>
+        <li class="clearfix user-info-name">
+            <span class="user-info-label">昵称</span>
+            <div class="user-info-edit">
+                <span><%=data.name%></span>
+                <i class="fa fa-chevron-right"></i>
+            </div>
+        </li>
+        <li class="clearfix">
+            <span class="user-info-label">性别</span>
+            <div class="user-sex-radio">
+                <label><input type="radio" name="sex" <%=data.sex===0?"checked":""%> value=0 /><span>女</span></label>
+                <label><input type="radio" name="sex" <%=data.sex===1?"checked":""%> value=1 /><span>男</span></label>
+            </div>
+        </li>
+        <% if (data.parent_ids) { %>
+            <% for (var i = 0, l = data.parent_ids.length; i < l; i++) { var parent = kd.get(data.parent_ids[i]); %>
+                <li class="clearfix">
+                    <span class="user-info-label"><%=kd.getCall(parent.relation)%></span>
+                    <% var phone = parent.contact_info ? (parent.contact_info.mobi || "") : ""; %>
+                    <% if (phone) { %>
+                        <div class="user-info-edit">
+                            <a class="user-info-phone" href="tel:<%=phone%>"><i class="fa fa-mobile fa-2x color-green"></i><span><%=phone%></span></a>
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                    <% } else { %>
+                        <div class="user-info-edit">
+                            <a class="user-info-phone" href="javascript:;"><i class="fa fa-mobile fa-2x"></i><span>暂无</span></a>
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                    <% } %>
+                </li>
+            <% } %>
+        <% } else { %>
+            <li class="clearfix">
+                <span class="user-info-label">联系方式</span>
+                <% var phone = data.contact_info ? (data.contact_info.mobi || "") : ""; %>
+                <% if (phone) { %>
+                    <div class="user-info-edit">
+                        <a class="user-info-phone" href="tel:<%=phone%>"><i class="fa fa-mobile fa-2x color-green"></i><span><%=phone%></span></a>
+                        <i class="fa fa-chevron-right"></i>
+                    </div>
+                <% } else { %>
+                    <div class="user-info-edit">
+                        <a class="user-info-phone" href="javascript:;"><i class="fa fa-mobile fa-2x"></i><span>暂无</span></a>
+                        <i class="fa fa-chevron-right"></i>
+                    </div>
+                <% } %>
+            </li>
+        <% } %>
+    </ul>
+    <ul>
+        <% var kgData = kd.getCurrData("kg"), classData = kd.getCurrData("class"); %>
+        <li class="clearfix">
+            <span class="user-info-label">地址</span>
+            <span><%=kgData.address || "暂无"%></span>
+        </li>
+        <li class="clearfix">
+            <span class="user-info-label">学校</span>
+            <span><%=kgData.title || "暂无"%></span>
+        </li>
+        <li class="clearfix">
+            <span class="user-info-label">班级</span>
+            <span><%=classData.title || "暂无"%></span>
+        </li>
+    </ul>
+</div>
+<nav class="app-view-nav-bar single-btn">
+    <a href="javascript:;" class="btn-handle-cancel">返回</a>
+</nav>

@@ -7,7 +7,8 @@ require.config({
         'lazyload'              : 'libs/zepto/lazyload',
         'touch'                 : 'libs/zepto/touch',
         'underscore'            : 'libs/underscore',
-        'text'                  : 'libs/text'
+        'text'                  : 'libs/text',
+        'weixin'                : 'libs/weixin'
     },
     shim : {
         'backbone' : {
@@ -29,7 +30,7 @@ require.config({
     urlArgs : '_='+new Date().getTime()
 });
 
-require(['backbone', 'routers/workspace'], function (backbone, workspace) {
+require(['backbone', 'models/kd', 'routers/workspace'], function (backbone, kd, workspace) {
     var appRouters = new workspace();
 
     backbone.history.start();

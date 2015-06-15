@@ -1,0 +1,93 @@
+/**
+ * 个人中心样式
+ *
+ * @author mingxin.huang
+ * @update 2015.06.14
+ */
+
+.app-view-user {
+
+}
+
+.app-view-user .app-view-content {
+    background-color: #F5F5F5;
+}
+
+.app-view-user ul {
+    margin: 20px 20px 50px;
+}
+
+.app-view-user li {
+    height: 40px;
+    line-height: 40px;
+    padding: 20px;
+    border-bottom: 1px solid #DDD;
+    background-color: #FFF;
+}
+
+.app-view-user .user-info-ava {
+    height: 120px;
+    line-height: 120px;
+}
+
+.app-view-user ul li:last-child {
+    border-bottom: none;
+}
+
+.app-view-user li > * {
+    float: right;
+}
+
+.app-view-user li .user-info-label {
+    float: left;
+}
+
+.app-view-user li .user-info-phone {
+    color: #333;
+}
+
+.app-view-user li .user-info-phone * {
+    float: left;
+}
+
+.app-view-user li .user-info-phone i {
+    margin: -5px 10px 0 0;
+}
+
+/*编辑状态下的样式*/
+
+.app-view-user-self li .user-info-edit {
+    
+}
+
+.app-view-user-self li .user-info-edit > * {
+    float: left;
+}
+
+.app-view-user-self li .user-info-edit .fa-chevron-right {
+    line-height: 40px;
+    margin: 0 0 0 10px;
+}
+
+.app-view-user-self .user-info-ava .user-info-edit .fa-chevron-right {
+    line-height: 120px;
+}
+
+.app-view-user-self .user-sex-radio {
+    
+}
+
+.app-view-user-self .user-sex-radio label {
+    float: left;
+    margin: 0 0 0 20px;
+}
+
+.app-view-user-self .user-sex-radio label * {
+    float: left;
+}
+
+.app-view-user-self .user-sex-radio input {
+    width: 30px;    
+    height: 30px;
+    margin: 5px 10px 0 0;
+}

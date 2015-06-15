@@ -1,0 +1,50 @@
+<% var core = require("base/core"), kd = require("models/kd"), teacher = kd.get(data.teacher_id); %>
+<div class="app-view-content fa-sz-24">
+    <div class="detail-info-area clearfix">
+        <div class="ava-area detail-info-left">
+            <a href="#user/<%=data.teacher_id%>" class="ava ava-sm">
+                <img src="<%=core.getAvatar(data.teacher_id)%>" alt="">
+            </a>
+            <span class="fa-sz-24 color-red"><%=teacher.name%></span>
+        </div>
+        <div class="detail-info-right">
+            <p><%=core.getTime(data.ts*1000)%></p>
+            <p><%=data.title%></p>
+        </div>
+    </div>
+    <p class="detail-content-area font-bold"><%=data.content%></p>
+    <% if (data.pics && data.pics.length > 0) { %>
+        <ul class="detail-img-area clearfix">
+            <% for (var i = 0, l = data.pics.length; i < l; i++) { %>
+                <li>
+                    <img src="<%=core.getImg(data.pics[i])%>" alt="" />
+                </li>
+            <% } %>
+        </ul>
+    <% } %>
+    <% var vote = data.vote, items = vote.items, poll = vote.poll || {}; if (items.length > 0) { %>
+        <div class="detail-vote-area">
+            <p class="font-bold">投票情况</p>
+            <ul>
+                <% for (var i = 0; i < items.length; i++) { %>
+                <% var currPoll = poll[i+1] || [], count = currPoll.length, percent = (count/model.getVoteCount()*100).toFixed(1)+"%"; %>
+                    <li>
+                        <% if (!model.hasVoted()) { %>
+                            <label class="clearfix"><input type="radio" name="voteRadio" value="<%=i+1%>" /><span><%=items[i]%></span></label>
+                        <% } %>
+                        <div class="vote-progress-area clearfix">
+                            <span class="progress-area">
+                                <i class="progress-bar" style="width : <%=percent%>;"></i>
+                                <span class="progress-tip fa-sz-20"><%=count%>票</span>
+                            </span>
+                            <span class="percent-tip"><%=percent%></span>
+                        </div>
+                    </li>
+                <% } %>
+            </ul>
+        </div> 
+    <% } %>
+</div>
+<nav class="app-view-nav-bar">
+    <a href="javascript:;" class="btn-handle-cancel">返回</a>
+</nav>

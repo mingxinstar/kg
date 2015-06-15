@@ -1,0 +1,72 @@
+/**
+ * 通讯录样式
+ *
+ * @author mingxin.huang
+ * @update 2015.06.15
+ */
+
+.app-view-contacts {
+
+}
+
+.app-view-contacts .app-view-top-nav li {
+    width: 50%;
+}
+
+
+/*内容区域样式*/
+.app-content-panel.show-teacher .contacts-panel-parent {
+    margin-left: -720px;
+}
+
+.app-view-contacts .app-content-panel ul {
+    margin: 20px;
+    padding: 0 0 200px;
+}
+
+.app-view-contacts .app-content-panel li {
+    padding: 20px;
+    background-color: #FFF;
+    border-bottom: 1px solid #DDD;
+    font-size: 24px;
+}
+
+.app-view-contacts .app-content-panel .common-item {
+    height: 80px;
+    line-height: 80px;
+    padding: 10px;
+}
+
+.app-view-contacts .common-item span {
+    width: 150px;
+    margin: 0 20px 0 0;
+}
+
+.app-view-contacts .common-item .contacts-tel {
+    color: #333;
+}
+
+.app-view-contacts .common-item .contacts-tel i {
+    float: left;
+    margin: 15px 10px 0 0;
+}
+
+.app-view-contacts .app-content-panel li > * {
+    float: left;
+}
+
+.app-view-contacts .app-content-panel li .ava {
+    margin: 0 20px 0 0;
+}
+
+.app-view-contacts .contacts-auth-info {
+    width: 520px;
+}
+
+.app-view-contacts .contacts-auth-info .contacts-auth-handler {
+    text-align: right;
+}
+
+.app-view-contacts .contacts-auth-info .contacts-auth-handler a {
+    margin: 0 0 0 20px;
+}

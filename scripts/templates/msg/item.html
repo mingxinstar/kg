@@ -1,0 +1,13 @@
+<% var core = require("base/core"), kd = require("models/kd"), teacher = kd.get(data.teacher_id); %>
+<div class="msg-list-left ava-area">
+    <a href="#user/<%=data.teacher_id%>" class="ava ava-sm"><img src="<%=core.getAvatar(data.teacher_id)%>" alt="" /></a>
+    <span class="color-red fa-sz-20"><%=teacher.name%></span>
+</div>
+<div class="msg-list-right fa-sz-24">
+    <p><%=core.getTime(data.ts*1000)%></p>
+    <p class="font-bold"><%=data.title%></p>
+    <p><%=data.content%></p>
+    <% if (kd.isSelf(data.teacher_id)) { %>
+        <p><i class="fa fa-trash-o fa-2x"></i></p>
+    <% } %>
+</div>

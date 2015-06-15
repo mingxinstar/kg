@@ -14,20 +14,12 @@
 .view-index-header > div {
     float: left;
 }
-.index-header-avatar {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
+
+.view-index-header > a {
+    float: left;
     margin: 25px 25px 20px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -o-border-radius: 10px;
-    border-radius: 10px;
 }
-.index-header-avatar img {
-    width: 150px;
-    height: 150px;
-}
+
 .index-header-weather {
     padding: 25px 0 0;
 }

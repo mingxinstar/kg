@@ -1,0 +1,21 @@
+<% var core = require("base/core"), kd = require("models/kd"); %>
+<a href="#user/<%=data._id%>" class="ava ava-xs"><img src="<%=core.getAvatar(data._id)%>" alt=""></a>        
+<% if (data.parent_ids) { %>
+    <span class="<%=data.sex === 0 ? "color-pink" : "color-blue"%>"><%=data.name%></span>
+<% } else { %>
+    <span class="color-red"><%=data.name%></span>
+<% } %>
+<% var phone = ""; %>
+<% if (data.parent_ids) { %>
+    <% var parent = kd.getMainParent(data._id); phone = parent.phone; %>
+<% } else { %>
+    <% phone = data.contact_info ? (data.contact_info.mobi || "") : ""; %>
+<% } %>
+<%  if (phone) { %>
+    <a class="contacts-tel" href="tel:<%=phone%>">
+        <i class="fa fa-mobile fa-2x color-green"></i>
+        <span><%=phone%></span>
+    </a>
+<% } else { %>
+    <a class="contacts-tel" href="javascript:;">暂无</a>
+<% } %>

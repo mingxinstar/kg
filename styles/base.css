@@ -50,26 +50,32 @@ html, body {
 .fa-sz-60 {
     font-size: 60px;
 }
+.font-bold {
+  font-weight: bold;
+}
 
 /*各颜色值*/
 .color-blue {
     color: #2FA4E7;
- }
+}
 .color-green {
     color: #73A839;
- }
+}
 .color-deep-blue {
     color: #033C73;
- }
+}
 .color-orange {
     color:  #DD5600;
- }
+}
 .color-red {
     color: #C71C22;
- }
- .color-pink {
+}
+.color-pink {
     color: #FF1493;
- }
+}
+.color-999 {
+    color: #999;
+}
 .bg-blue {
     background-color: #2fa4e7;
     background-image: -webkit-linear-gradient(#54b4eb, #2fa4e7 60%, #1d9ce5);
@@ -203,34 +209,46 @@ html, body {
 }
 
 /*头像样式*/
+.ava-area {
+
+}
+
+.ava-area span {
+    display: inline-block;
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+    margin: 10px 0 0;
+}
+
 .ava {
-  display: block;
-  width: 120px;
-  height: 120px;
-  overflow: hidden;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
+    display: block;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
 }
 .ava img {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .ava-xs {
-  width: 80px;
-  height: 80px;
+    width: 80px;
+    height: 80px;
 }
 
 .ava-sm {
-  width: 100px;
-  height: 100px;
+    width: 100px;
+    height: 100px;
 }
 
 .ava-lg {
-  width: 150px;
-  height: 150px;
+    width: 150px;
+    height: 150px;
 }
 
 /*全局样式*/
@@ -256,6 +274,87 @@ html, body {
 #app-wrap .app-view-index {
     left: 0;
 }
+
+/*独立操作模块样式*/
+.app-view-handler {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.app-view-handler .app-view-content {
+    background-color: #FFF;
+}
+
+.app-view-handler .app-view-nav-bar a {
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: #DDD;
+    text-align: center;
+    text-indent: 0;
+    color: #333;
+}
+
+.app-view-handler .app-view-nav-bar.single-btn a {
+    width: 100%;
+}
+
+.app-view-handler .app-view-nav-bar .btn-handle-confirm {
+    color: #FFF;
+    background-color:  #77B300;
+}
+
+
+
+/*头部导航栏样式*/
+.app-view-top-nav {
+    background-color: #FFF;
+}
+
+.app-view-handler .app-view-content {
+    background-color: #FFF;
+}
+
+.app-view-top-nav li {
+    float: left;
+    width: 240px;
+    padding: 15px 0;
+}
+.app-view-top-nav .active {
+    border-bottom: 2px solid #77b300;
+}
+.app-view-top-nav span {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 5px 0;
+    text-align: center;
+    border-right: 1px solid #DDD;
+}
+.app-view-top-nav li:last-child span {
+    border-right: none;
+}
+
+/*二级内容样式*/
+.app-content-panel {
+    width: 300%;
+    height: 100%;
+}
+
+.app-content-panel > div {
+    float: left;
+    width: 720px;
+    height: 100%;
+    overflow: scroll;
+    -webkit-transition: margin 0.3s;
+    -o-transition: margin 0.3s;
+    transition: margin 0.3s;
+}
+
+/*底部导航栏样式*/
 .app-view-nav-bar {
     position: absolute;
     left: 0;
@@ -294,7 +393,7 @@ html, body {
 .common-ul {
     padding: 0 0 120px;
 }
-.common-ul li {
+.common-ul > li {
     width: 640px;
     overflow: hidden;
     padding: 20px;

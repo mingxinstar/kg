@@ -16,7 +16,7 @@ define(function (require) {
     var checkInView = backbone.View.extend({
         el : '.app-view-checkin',
         events : {
-            'tap .app-view-nav li' : 'changePanel',
+            'tap .app-view-top-nav li' : 'changePanel',
             'tap .app-view-nav-bar > .btn' : 'showHandler'
         },
         initialize : function () {

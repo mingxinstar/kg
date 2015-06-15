@@ -61,6 +61,16 @@ define(function (require) {
             var date = this.$input.val();
 
             this.collection.load(date);
+        },
+        /**
+         * 刷新当天的数据
+         */
+        refreshToday : function () {
+            var date = core.formatTime(null, 'yyyy-MM-dd');
+
+            this.$input.val(date);
+
+            this.collection.load(date);
         }
     });
 

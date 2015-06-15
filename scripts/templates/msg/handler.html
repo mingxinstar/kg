@@ -1,0 +1,33 @@
+<div class="app-view-content">
+    <form>
+        <input class="common-input" type="text" name="title" placeholder="通知标题">
+        <textarea class="common-input" name="content" placeholder="通知内容"></textarea>
+        <ul class="pic-select-area clearfix">
+            <li class="pic-select">
+                <i class="fa fa-plus fa-3x"></i>
+            </li>
+        </ul>
+        <div class="vote-toggle-area">
+            <span>启用投票：</span> 
+            <label class="radio"><input type="radio" name="voteAccess" value="0" checked><span>不启用</span></label>
+            <label class="radio"><input type="radio" name="voteAccess" value="1"><span>启用</span></label>
+        </div>
+        <ul class="vote-area">
+            <li class="clearfix">
+                <span>1</span>
+                <input type="text" name="vote-item-1" placeholder="请输入投票选项">
+                <i class="fa fa-times fa-2x"></i>
+            </li>
+            <li class="clearfix">
+                <span>2</span>
+                <input type="text" name="vote-item-2" placeholder="请输入投票选项">
+                <i class="fa fa-times fa-2x"></i>
+            </li>
+        </ul>
+        <a href="javascript:;" class="color-green btn-add-vote">添加投票选项</a>
+    </form>
+</div>
+<nav class="app-view-nav-bar">
+    <a href="javascript:;" class="btn-handle-cancel">取消</a>
+    <a href="javascript:;" class="btn-handle-confirm">确定</a>
+</nav>

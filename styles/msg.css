@@ -1,0 +1,147 @@
+/**
+ * 消息区域公用样式
+ *
+ * @author mingxin.huang
+ * @update 2015.06.14
+ */
+
+.app-view-msg {
+
+}
+
+.app-view-msg .app-view-content {
+    
+}
+
+.app-view-msg > .app-view-content li {
+}
+
+.app-view-msg > .app-view-content li > div {
+    float: left;
+}
+
+.app-view-msg .msg-list-left {
+    margin: 0 20px 0 0;
+}
+
+.app-view-msg .msg-list-right {
+    width: 520px;
+}
+
+.app-view-msg .msg-list-right .fa-trash-o {
+    float: right;
+}
+
+/*详细页样式*/
+.app-view-msg-detail {
+
+}
+
+.app-view-msg-detail .app-view-content {
+    background-color: #F5F5F5;
+}
+
+.app-view-msg-detail .app-view-content > * {
+    padding: 20px;
+    margin: 20px;
+    background-color: #FFF;
+}
+
+.app-view-msg-detail .app-view-content > *:last-child {
+    margin-bottom: 200px!important;
+}
+
+.detail-info-area {
+    
+}
+
+.detail-info-area .detail-info-left {
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.detail-info-area .detail-info-right {
+    float: left;
+    width: 520px;
+}
+
+.detail-img-area {
+    
+}
+
+.detail-img-area li {
+    float: left;
+    margin: 10px 10px 0 0;
+}
+
+.detail-img-area li img {
+    width: 200px;
+    height: 200px;
+}
+
+.detail-vote-area {
+
+}
+
+.detail-vote-area p {
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.detail-vote-area label {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    margin: 10px 0;
+}
+
+.detail-vote-area label input {
+    float: left;
+    width: 30px;
+    height: 30px;
+    margin: 5px 10px 0 0;
+}
+
+.vote-progress-area {
+    height: 40px;
+    line-height: 40px;
+    margin: 0 0 20px;    
+}
+
+.vote-progress-area .progress-area {
+    float: left;
+    position: relative;
+    width: 545px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 10px 0 0;
+    background-color: #F5F5F5;
+}
+
+.vote-progress-area .progress-area .progress-bar {
+    display: block;
+    height: 40px;
+    background-color: #73A839;
+}
+
+.vote-progress-area .progress-area .progress-tip {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    height: 30px;
+    line-height: 30px;
+    color: #FFF;
+}
+
+.vote-progress-area .percent-tip {
+    float: left;
+}
+
+/*回复区域*/
+.detail-chat-area {
+    margin-bottom: 150px!important;
+}
+
+.app-view-msg-detail .app-view-nav-bar .btn-handle-cancel {
+    width: 100%;
+}

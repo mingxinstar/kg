@@ -78,6 +78,8 @@ define(function (require) {
             }
         }, options);
 
+        // TODO：增加code码处理机制
+
         // 处理url，get请求填充url上的数据
         var url = typeof model.url === 'string' ? model.url : options.url;
 
@@ -97,6 +99,8 @@ define(function (require) {
 
         return $.ajax(params);
     }
+
+
 
     /**
      * 获取数据

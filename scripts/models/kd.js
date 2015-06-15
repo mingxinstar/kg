@@ -16,9 +16,12 @@ define(function (require) {
         localStorage : new localStorage("kd-info"),
         initialize : function () {
             var storageData = this.localStorage.find(this);
+            
             if (storageData) {
                 this.defaults = storageData;
             }
+
+            // core.debug('storageData: ', storageData);
 
             this.fetch({
                 success : function (model) {
@@ -62,6 +65,8 @@ define(function (require) {
          * @return {Boolean}         [description]
          */
         isSelf : function (user_id) {
+            user_id = parseInt(user_id, 10);
+
             return user_id === this.getUserId();
         },
         /**
@@ -90,6 +95,46 @@ define(function (require) {
             });
 
             return childrenAry;
+        },
+        /**
+         * 返回当前所有的教师
+         * @return {Array} [description]
+         */
+        getTeachers : function () {
+            var teacherIds = this.getCurrData('kg').teacher_ids,
+                teacherAry = [];
+
+            for (var i = 0, l = teacherIds.length; i < l; i++) {
+                var teacher = this.get(teacherIds[i]);
+                teacher._id = teacherIds[i];
+
+                teacherAry.push(teacher);
+            }
+
+            return teacherAry;
+        },
+        /**
+         * 获取小孩的主要监护人
+         * @param  {[type]} childId [description]
+         * @return {[type]}         [description]
+         */
+        getMainParent : function (childId) {
+            var child = this.get(childId),
+                parentIds = child.parent_ids || [],
+                mainParent = null;
+
+            for (var i = 0, l = parentIds.length; i < l; i++) {
+                var parent = this.get(parentIds[i]);
+
+                if (parent.main) {
+                    mainParent = parent;
+                    break;
+                }
+            }
+
+            mainParent.phone = mainParent.contact_info ? (mainParent.contact_info.mobi || '') : '';
+
+            return mainParent;
         },
         /**
          * 获取称呼

@@ -1,8 +1,8 @@
 <%var core = require("base/core"), kd = require("models/kd"), child = kd.get(data.child_id), parent = kd.get(data.parent_id); %>
 <div class="vocate-list-left">
-    <div class="ava ava-sm">
+    <a href="#user/<%=data.child_id%>" class="ava ava-sm">
         <img src="<%=core.getAvatar(data.child_id)%>" alt="" />
-    </div>
+    </a>
     <span class="fa-sz-20 <%=child.sex === 0 ? "color-pink" : "color-blue"%>"><%=child.name%></span>
 </div>
 <div class="vocate-list-right fa-sz-24">

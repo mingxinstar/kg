@@ -64,10 +64,12 @@ define(function (require) {
          * 预览图片
          */
         preview : function (e) {
-            new albumPreview({
+            var previewView = new albumPreview({
                 currPic : $(e.target).data('key'),
                 model : this.model
             });
+
+            $('.app-view-album').append(previewView.render().$el);
         }
     });
 

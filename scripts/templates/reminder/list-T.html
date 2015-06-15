@@ -2,9 +2,9 @@
 <div class="reminder-time fa-sz-24">提醒时间：<%=data.alarm%></div>
 <div class="reminder-content fa-sz-24 clearfix">
     <div class="reminder-content-left">
-        <div>
+        <a href="#user/<%=data.child_id%>" class="ava ava-sm">
             <img src="<%=core.getAvatar(data.child_id)%>" alt="" />
-        </div>
+        </a>
         <span class="<%=child.sex === 0 ? "color-pink" : "color-blue"%>"><%=child.name + kd.getCall(parent.relation)%></span>
     </div>
     <div class="reminder-content-right">

@@ -1,0 +1,20 @@
+<% var core = require("base/core"), kd = require("models/kd"); %>
+<a href="#user/<%=data._id%>" class="ava ava-sm"><img src="<%=core.getAvatar(data._id)%>" alt="" /></a>
+<div class="contacts-auth-info">
+    <% if (data.parent_ids) { %>
+        <p class="<%=data.sex === 0 ? "color-pink" : "color-blue"%>"><%=data.name%></p>
+    <% } else { %>
+        <p class="color-red"><%=data.name%></p>
+    <% } %>
+    <% if (data.parent_ids) { %>
+        <% var mainParent = kd.getMainParent(data._id); %>
+        <p>申请人：<%=kd.getCall(mainParent.relation)%></p>
+        <p>联系方式：<%=mainParent.contact_info ? (mainParent.contact_info.mobi || "暂未填写") : "暂未填写"%></p>
+    <% } else { %>
+        <p>联系方式：<%=data.contact_info ? (data.contact_info.mobi || "暂未填写") : "暂未填写"%></p>
+    <% } %>
+    <p class="contacts-auth-handler">
+        <a href="javascript:;" class="btn btn-success">同意</a>
+        <a href="javascript:;" class="btn btn-default">拒绝</a>
+    </p>
+</div>

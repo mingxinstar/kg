@@ -43,7 +43,7 @@ define(function (require) {
 
     var detaiView = backbone.View.extend({
         tagName : 'div',
-        className : 'app-view-detail',
+        className : 'app-view-handler app-view-detail',
         collection : detailList,
         events : {
             'tap .btn-handle-cancel' : 'close',

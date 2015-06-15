@@ -37,13 +37,6 @@ define(function (require) {
 
             this.collection.load();
         },
-        /**
-         * 显示当前面板
-         * @return {[type]} [description]
-         */
-        show : function () {
-            this.$el.addClass('show-app-view');
-        },
         addOne : function (model) {
             var view = new albumView({model : model});
 

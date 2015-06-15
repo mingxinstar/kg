@@ -1,0 +1,111 @@
+/**
+ * 教师专属消息相关样式
+ *
+ * @author mingxin.huang
+ * @update 2015.06.14
+ */
+
+.app-view-msg-create {
+}
+
+.app-view-msg-create form {
+    padding: 20px 20px 150px;
+    font-size: 24px;
+}
+
+.common-input {
+    display: block;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    border: 2px solid #DDD;
+    text-indent: 20px;
+}
+
+.app-view-msg-create form > * {
+    margin: 0 0 20px;
+}
+
+.app-view-msg-create textarea {
+    height: 200px;
+}
+
+.app-view-msg-create .pic-select-area {
+    
+}
+
+.app-view-msg-create .pic-select-area li {
+    position: relative;
+    float: left;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    margin: 0 20px 0 0;
+    border: 2px solid #DDD;
+    background-color: #EFEFEF;
+}
+
+.app-view-msg-create .pic-select-area li img {
+    width: 100px;
+    height: 100px;
+}
+
+.app-view-msg-create .pic-select-area li .fa-minus-circle {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+
+.app-view-msg-create .pic-select-area .pic-select {
+    line-height: 155px;
+    text-align: center;
+}
+
+.app-view-msg-create .vote-toggle-area {
+    
+}
+
+.app-view-msg-create .vote-toggle-area input {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+}
+
+.app-view-msg-create .vote-area {
+    
+}
+
+.app-view-msg-create .vote-area li {
+    height: 60px;
+    line-height: 60px;
+    border: 2px solid #DDD;
+    margin: 0 0 20px;
+}
+
+.app-view-msg-create .vote-area li > *{
+    float: left;
+}
+
+.app-view-msg-create .vote-area li span {
+    display: inline-block;
+    width: 40px;
+    border-right: 1px solid #DDD;
+    text-align: center;
+}
+
+.app-view-msg-create .vote-area li input {
+    width: 590px;
+    height: 60px;
+    line-height: 60px;
+    border: none;
+    text-indent: 20px;
+}
+
+.app-view-msg-create .vote-area li .fa-times {
+    margin: 6px 0 0;
+}
+
+.app-view-msg-create .btn-add-vote {
+    text-decoration: underline;
+}

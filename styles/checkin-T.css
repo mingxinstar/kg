@@ -17,36 +17,7 @@
     overflow: hidden;
 }
 
-.app-view-checkin .app-view-nav {
-    background-color: #FFF;
-}
-
-.app-view-checkin .app-view-nav li {
-    float: left;
-    width: 240px;
-    padding: 15px 0;
-}
-.app-view-checkin .app-view-nav .active {
-    border-bottom: 2px solid #77b300;
-}
-.app-view-checkin .app-view-nav span {
-    display: block;
-    height: 30px;
-    line-height: 30px;
-    padding: 5px 0;
-    text-align: center;
-    border-right: 1px solid #DDD;
-}
-.app-view-checkin .app-view-nav li:last-child span {
-    border-right: none;
-}
-
 /*内容区域样式*/
-.checkin-content-panel {
-    width: 300%;
-    height: 100%;
-}
-
 .checkin-content-panel.show-vocate .checkin-panel-today {
     margin-left: -720px;
 }
@@ -57,16 +28,6 @@
 
 .checkin-content-panel.show-report .checkin-panel-vocate {
     margin-left: -720px;
-}
-
-.checkin-content-panel > div {
-    float: left;
-    width: 720px;
-    height: 100%;
-    overflow: scroll;
-    -webkit-transition: margin 0.3s;
-    -o-transition: margin 0.3s;
-    transition: margin 0.3s;
 }
 
 /*今日考勤部分样式*/
@@ -265,20 +226,6 @@
 }
 
 /*添加考勤样式*/
-.app-view-handler,
-.app-view-detail {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.app-view-handler .app-view-content,
-.app-view-detail .app-view-content {
-    background-color: #FFF;
-}
-
 .app-view-handler ul {
     padding: 0 0 150px;
 }
@@ -301,21 +248,6 @@
     display: block;
 }
 
-.app-view-handler li div {
-    width: 120px;
-    height: 120px;
-    overflow: hidden;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -o-border-radius: 50%;
-    border-radius: 50%;
-}
-
-.app-view-handler li img {
-    width: 120px;
-    height: 120px;
-}
-
 .app-view-handler li span {
     display: inline-block;
     width: 100%;
@@ -324,25 +256,6 @@
     text-align: center;
 }
 
-.app-view-handler .app-view-nav-bar a,
-.app-view-detail .app-view-nav-bar a {
-    float: left;
-    width: 50%;
-    height: 100%;
-    background-color: #DDD;
-    text-align: center;
-    text-indent: 0;
-    color: #333;
-}
-
-.app-view-handler .app-view-nav-bar .btn-handle-confirm {
-    color: #FFF;
-    background-color:  #77B300;
-}
-
-.app-view-detail .app-view-nav-bar a {
-    width: 100%;
-}
 
 /*详细页样式*/
 .app-view-detail {
@@ -360,4 +273,8 @@
 
 .app-view-detail .detail-info-area {
     padding: 20px;
+}
+
+.app-view-detail .app-view-nav-bar a {
+    width: 100%;
 }

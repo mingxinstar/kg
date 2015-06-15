@@ -22,6 +22,7 @@ define(function (require) {
             'tap img'          : 'close',
             'tap .fa-arrow-up' : 'toggleDel',
             'tap .btn-danger'  : 'delPic',
+            'tap .btn-primary' : 'toggleCollect',
             'swipeLeft'        : 'next',
             'swipeRight'       : 'prev'
         },
@@ -30,7 +31,7 @@ define(function (require) {
 
             this.listenTo(this.model, 'delPic', this.rmPic);
 
-            this.render();
+            // this.render();
         },
         render : function () {
             var data = this.model.toJSON();
@@ -40,8 +41,6 @@ define(function (require) {
             this.$pagin = this.$('.album-preview-pagin');
             this.$list = this.$('ul');
             this.$list.css('marginLeft', this.currIndex*-720);
-
-            $('.app-view-album').append(this.$el);
 
             return this;
         },
@@ -110,6 +109,20 @@ define(function (require) {
             this.$('li[data-key='+pic_key+']').remove();
             this.toggleDel();
             this.setPagin();
+        },
+        /**
+         * 切换图片收藏
+         * @param  {[type]} e [description]
+         */
+        toggleCollect : function (e) {
+            var $this = $(e.currentTarget),
+                $i = $this.find('i'),
+                pics = this.model.get('pics'),
+                picKey = pics[this.currIndex];
+
+            $i.removeClass('fa-star-o').addClass('fa-star');
+
+            this.model.collect(picKey);
         }
     });
 

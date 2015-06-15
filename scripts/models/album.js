@@ -15,7 +15,8 @@ define(function (require) {
             delAlbum : 'album/del_album/{album_id}',
             delPic   : 'album/del_pic/{album_id}/{pic_key}',
             editDesc : 'album/desc',
-            read     : 'album/reader/{album_id}'
+            read     : 'album/reader/{album_id}',
+            collect  : 'child_albums/collect/{pic_key}'
         },
         sync : core.sync,
         initialize : function () {
@@ -86,6 +87,20 @@ define(function (require) {
             this.save('reader_count', count+1, {
                 url : this.urls.read,
                 data : {album_id : this.get('_id')}
+            });
+        },
+        /**
+         * 收藏某张照片
+         * @param  {[type]} pic_key [description]
+         */
+        collect : function (pic_key) {
+            core.debug('collect : ', pic_key, this.isNew());
+
+            core.getResult({
+                url : this.urls.collect,
+                data : {
+                    pic_key : pic_key
+                }
             });
         }
     });
