@@ -12,30 +12,31 @@ define(function (require) {
         touch = require('touch'),
 
         core = require('base/core'),
-        albumModel = require('models/album'),
         previewTmpl = require('text!templates/album/preview.html');
 
     var albumPreviewView = backbone.View.extend({
         className : 'album-preview-area',
-        model : albumModel,
         events : {
-            'tap img'          : 'close',
-            'tap .fa-arrow-up' : 'toggleDel',
-            'tap .btn-danger'  : 'delPic',
-            'tap .btn-primary' : 'toggleCollect',
-            'swipeLeft'        : 'next',
-            'swipeRight'       : 'prev'
+            'tap img'                 : 'close',
+            'tap .fa-arrow-up'        : 'toggleDel',
+            'tap .btn-del-pic'        : 'delPic',
+            'tap .btn-collect'        : 'collect',
+            'tap .btn-cancel-collect' : 'cancelCollect',
+            'swipeLeft'               : 'next',
+            'swipeRight'              : 'prev'
         },
         initialize : function (attrs, options) {
-            this.currIndex = this.model.get('pics').indexOf(attrs.currPic);
+            core.loadCss('preview');
+
+            this.type = attrs.type || 'parent';
+            this.currIndex = this.model.indexOf(attrs.currPic);
 
             this.listenTo(this.model, 'delPic', this.rmPic);
-
-            // this.render();
         },
         render : function () {
             var data = this.model.toJSON();
             data.currIndex = this.currIndex;
+            data.type = this.type;
 
             this.$el.html(template(previewTmpl, {data : data}));
             this.$pagin = this.$('.album-preview-pagin');
@@ -100,13 +101,19 @@ define(function (require) {
          * @return {[type]} [description]
          */
         rmPic : function (pic_key) {
-            this.currIndex = this.currIndex === 0 ? 0 : this.currIndex-1;
+            var length = this.model.get('pics').length;
 
             if (this.model.get('pics').length === 0) {
                 return this.close();
             }
-
+            
             this.$('li[data-key='+pic_key+']').remove();
+
+            if (this.currIndex >= length) {
+                this.currIndex = length -1 ;
+                this.$list.css('marginLeft', -720*this.currIndex);
+            }
+
             this.toggleDel();
             this.setPagin();
         },
@@ -114,7 +121,7 @@ define(function (require) {
          * 切换图片收藏
          * @param  {[type]} e [description]
          */
-        toggleCollect : function (e) {
+        collect : function (e) {
             var $this = $(e.currentTarget),
                 $i = $this.find('i'),
                 pics = this.model.get('pics'),
@@ -123,6 +130,17 @@ define(function (require) {
             $i.removeClass('fa-star-o').addClass('fa-star');
 
             this.model.collect(picKey);
+        },
+        /**
+         * 取消收藏
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
+        cancelCollect : function (e) {
+            var pics = this.model.get('pics'),
+                picKey = pics[this.currIndex].pkey; 
+
+            this.model.delPic(picKey);
         }
     });
 

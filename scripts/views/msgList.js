@@ -17,7 +17,7 @@ define(function (require) {
         collection : msgList,
         events : {
             'touchend .app-view-nav-bar .btn' : 'showHandler',
-            'touchend .app-view-content .msg-list-item' : 'showDetail'
+            'touchend .msg-list-right' : 'showDetail'
         },
         initialize : function () {
             this.$content = this.$('.app-view-content');
@@ -70,7 +70,8 @@ define(function (require) {
          */
         showDetail : function (e) {
             var $this = $(e.currentTarget),
-                id = $this.data('id'),
+                $li = $this.parent(),
+                id = $li.data('id'),
                 that = this;
 
             require(['views/msgDetail'], function (detailView) {

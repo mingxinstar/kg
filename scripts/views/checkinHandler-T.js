@@ -19,7 +19,7 @@ define(function (require) {
 
     var checkinHandlerView = backbone.View.extend({
         tagName : 'div',
-        className : 'app-view-handler',
+        className : 'app-view-handler app-view-checkin-add',
         events : {
             'tap li' : 'toggleSelect',
             'tap .btn-handle-cancel' : 'close',

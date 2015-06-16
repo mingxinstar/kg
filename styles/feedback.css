@@ -1,0 +1,22 @@
+/**
+ * 意见反馈样式
+ *
+ * @author mingxin.huang
+ * @update 2015.06.16
+ */
+
+.app-view-feedback {
+    
+}
+
+.app-view-feedback form {
+    margin: 20px;
+}
+
+.app-view-feedback form > * {
+    margin: 0 0 20px;
+}
+
+.app-view-feedback form > p {
+    text-align: center;
+}

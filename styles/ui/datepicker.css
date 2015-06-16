@@ -10,10 +10,33 @@
 }
 
 .datepicker-area .datepicker-title {
-    height: 60px;
-    line-height: 60px;
+    height: 80px;
+    line-height: 80px;
     color: #FFF;
     text-align: center;
+}
+
+.datepicker-area .datepicker-title-select {
+}
+
+.datepicker-area .datepicker-title-select span {
+    display: inline-block;
+    float: left;
+    text-align: center;
+}
+
+.datepicker-area .datepicker-title-select .datepicker-nav {
+    width: 98px;
+    border-right: 2px solid #1995dc;
+}
+
+.datepicker-area .datepicker-title-select .datepicker-nav:last-child {
+    border-right: none;
+    border-left: 2px solid #1995dc;
+}
+
+.datepicker-area .datepicker-title-select .datepicker-month {
+    width: 520px;
 }
 
 .datepicker-area table {
@@ -31,11 +54,18 @@
 }
 
 .datepicker-area tbody td {
+    position: relative;
     height: 50px;
     line-height: 50px;
     padding: 0 10px;
     border: 2px solid #DDD;
     text-align: right;
+}
+
+.datepicker-area tbody td i {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
 }
 
 .datepicker-area .date-selected {

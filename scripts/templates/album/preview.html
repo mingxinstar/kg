@@ -1,14 +1,16 @@
 <% var core = require("base/core"), kd = require("models/kd"); %>
 <ul class="clearfix">
-    <% for (var i = 0, l = data.pics.length; i < l; i++) { %>
-        <li data-key="<%=data.pics[i]%>">
+    <% for (var i = 0, l = data.pics.length; i < l; i++) { var pic = data.pics[i], key = pic.pkey || pic; %>
+        <li data-key="<%=key%>">
             <i class="fa fa-spinner fa-spin fa-white fa-5x"></i>
-            <img src="<%=core.getImg(data.pics[i], "m")%>" alt="" />
+            <img src="<%=core.getImg(key, "m")%>" alt="" />
             <div class="album-pic-handle-area">
-                <% if (kd.isTeacher() && kd.isSelf(data.teacher_id)) { %>
-                    <a href="javascript:;" class="btn btn-danger">删除图片</a>
+                <% if (data.type === "teacher") { %>
+                    <a href="javascript:;" class="btn btn-danger btn-del-pic">删除图片</a>
+                <% } else if (data.type === "parent") { %>
+                    <a href="javascript:;" class="btn btn-primary btn-collect"><i class="fa fa-star-o"></i>收藏到宝贝相册</a>
                 <% } else { %>
-                    <a href="javascript:;" class="btn btn-primary"><i class="fa fa-star-o"></i>收藏到宝贝相册</a>
+                    <a href="javascript:;" class="btn btn-primary btn-cancel-collect"><i class="fa fa-star"></i>取消收藏</a>
                 <% } %>
             </div>
         </li>

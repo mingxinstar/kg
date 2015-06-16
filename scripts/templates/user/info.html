@@ -14,16 +14,18 @@
             <span><%=data.sex === 0 ? "女" : "男"%></span>
         </li>
         <% if (data.parent_ids) { %>
-            <% for (var i = 0, l = data.parent_ids.length; i < l; i++) { var parent = kd.get(data.parent_ids[i]); %>
-                <li class="clearfix">
-                    <span class="user-info-label"><%=kd.getCall(parent.relation)%></span>
-                    <% var phone = parent.contact_info ? (parent.contact_info.mobi || "") : ""; %>
-                    <% if (phone) { %>
-                        <a class="user-info-phone" href="tel:<%=phone%>"><i class="fa fa-mobile fa-2x color-green"></i><span><%=phone%></span></a>
-                    <% } else { %>
-                        <a class="user-info-phone" href="javascript:;"><i class="fa fa-mobile fa-2x"></i><span>暂无</span></a>
-                    <% } %>
-                </li>
+            <% if (kd.isTeacher()) { %>
+                <% for (var i = 0, l = data.parent_ids.length; i < l; i++) { var parent = kd.get(data.parent_ids[i]); %>
+                    <li class="clearfix">
+                        <span class="user-info-label"><%=kd.getCall(parent.relation)%></span>
+                        <% var phone = parent.contact_info ? (parent.contact_info.mobi || "") : ""; %>
+                        <% if (phone) { %>
+                            <a class="user-info-phone" href="tel:<%=phone%>"><i class="fa fa-mobile fa-2x color-green"></i><span><%=phone%></span></a>
+                        <% } else { %>
+                            <a class="user-info-phone" href="javascript:;"><i class="fa fa-mobile fa-2x"></i><span>暂无</span></a>
+                        <% } %>
+                    </li>
+                <% } %>
             <% } %>
         <% } else { %>
             <li class="clearfix">

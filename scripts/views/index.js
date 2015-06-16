@@ -12,14 +12,14 @@ define(function (require) {
         template = require('template'),
 
         core = require('base/core'),
-        kdModel = require('models/kd'),
+        kd = require('models/kd'),
         weatherModel = require('models/weather'),
         wrapView = require('views/wrap'),
         weatherTmpl = require('text!templates/index/weather.html');
 
     var indexView = backbone.View.extend({
         el : '.view-index-header',
-        model : kdModel,
+        model : kd,
         model2 : weatherModel,
         initialize : function () {
             this.listenTo(this.model, 'change', this.render);
@@ -34,8 +34,16 @@ define(function (require) {
                 return this;
             }
 
-            this.$('.view-index-header img').attr('src', core.getAvatar(this.model.getUserId()));
-            this.$('.view-index-header a').attr('href', '#user/'+this.model.getUserId());
+            if (kd.isParent()) {
+                var child = kd.getCurrData().child;
+
+                this.$('.view-index-header .ava img').attr('src', core.getAvatar(child._id));
+                this.$('.view-index-header a').attr('href', '#user/'+child._id);
+            } else {
+                this.$('.view-index-header .ava img').attr('src', core.getAvatar(kd.getUserId()));
+                this.$('.view-index-header a').attr('href', '#user/'+kd.getUserId());
+            }
+
 
             return this;
         },

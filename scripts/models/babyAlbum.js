@@ -12,18 +12,23 @@ define(function (require) {
         core = require('base/core');
 
     var albumModel = backbone.Model.extend({
-        url : 'child_albums/del_pic/{date}/{pic_key}'
+        url : 'child_albums/del_pic/{date}/{pic_key}',
         sync : core.sync,
         initialize : function () {
             this.set('id', this.get('_id'));
         },
-        del : function (pic_key) {
+        indexOf : function (pic_key) {
+            return _.findIndex(this.get('pics'), {
+                pkey : pic_key
+            });
+        },
+        delPic : function (pic_key) {
             var pics = this.get('pics'),
-                index = _.findIndex(pics, {
-                    pkey : pic_key
-                });
+                index = this.indexOf(pic_key);
 
             pics.splice(index, 1);
+
+            this.trigger('delPic', pic_key);
 
             this.save('pics', pics, {
                 data : {

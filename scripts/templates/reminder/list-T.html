@@ -1,5 +1,10 @@
 <% var kd = require("models/kd"), core = require("base/core"), parent = kd.get(data.parent_id), child = kd.get(data.child_id); %>
-<div class="reminder-time fa-sz-24">提醒时间：<%=data.alarm%></div>
+<div class="reminder-time fa-sz-24">
+    <span>提醒时间：<%=data.alarm%></span>
+    <% if (!kd.isTeacher()) { %>
+        <i class="fa fa-trash fa-2x"></i>
+    <% } %>
+</div>
 <div class="reminder-content fa-sz-24 clearfix">
     <div class="reminder-content-left">
         <a href="#user/<%=data.child_id%>" class="ava ava-sm">
@@ -9,10 +14,12 @@
     </div>
     <div class="reminder-content-right">
         <p class="reminder-title"><%=data.title%></p>
-        <% if (data.audit === 1) { var reader = data.readers[0], teacher = kd.get(reader.teacher_id); %>
+        <% if (data.audit >= 1) { var reader = data.readers[0], teacher = kd.get(reader.teacher_id); %>
             <p class="reminder-tips"><%=core.getTime(reader.ts*1000)%> <%=teacher.name%> 已阅</p>
         <% } else { %>
-            <a href="javascript:;" class="btn btn-primary">知道了</a>
+            <% if (kd.isTeacher()) { %>
+                <a href="javascript:;" class="btn btn-primary">知道了</a>
+            <% } %>
         <% } %>
     </div>
 </div>

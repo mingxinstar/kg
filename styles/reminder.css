@@ -4,12 +4,12 @@
 
 .app-view-reminder {}
 
-.app-view-reminder ul {}
-.app-view-reminder ul li {
+.app-view-reminder .common-ul {}
+.app-view-reminder .common-ul li {
     width: 680px;
     padding: 0;
 }
-.app-view-reminder ul .reminder-readed {
+.app-view-reminder .common-ul .reminder-readed {
     color: #999;
 }
 
@@ -18,6 +18,11 @@
     line-height: 60px;
     text-indent: 20px;
     border-bottom: 1px solid #DDD;
+}
+
+.reminder-time i {
+    float: right;
+    margin: 6px 20px 0 0;
 }
 
 .reminder-content {padding: 20px;}
@@ -43,4 +48,43 @@
 }
 .reminder-content .reminder-content-right a {
     float: right;
+}
+
+/*家长新建样式*/
+
+.app-view-reminder-add {
+    
+}
+
+.app-view-reminder-add .app-view-content {
+    padding: 20px;
+}
+
+.app-view-reminder-add ul {
+    margin: 0 0 20px;
+}
+
+.app-view-reminder-add li {
+    float: left;
+    position: relative;
+    margin: 0 20px 0 0;
+}
+
+.app-view-reminder-add li i {
+    position: absolute;
+    display: none;
+    right: -10px;
+    top: -10px;
+}
+
+.app-view-reminder-add .selected i {
+    display: block;
+}
+
+.app-view-reminder-add input {
+    margin: 0 0 20px;
+}
+
+.app-view-reminder-add textarea {
+    height: 300px;
 }

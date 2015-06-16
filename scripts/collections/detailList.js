@@ -18,12 +18,12 @@ define(function (require) {
         },
         initialize : function (childId, month) {
             this.childId = childId;
-            this.month = month;
+            this.month = month || core.formatTime(null, 'yyyy-MM');
         },
-        load : function () {
+        load : function (month) {
             this.fetch({
                 data : {
-                    month : this.month,
+                    month : month || this.month,
                     child_id : this.childId
                 },
                 reset : true

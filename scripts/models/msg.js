@@ -31,13 +31,23 @@ define(function (require) {
                 },
                 teacher_id : kd.getUserId(),
                 ts : Math.round(new Date().getTime()/1000),
-                isNew : true
             }, options);
 
-            this.save(options, {
+            var saveData = {
+                    isNew : true
+                },
+                that = this;
+
+            this.save(_.extend(saveData, options), {
                 url : this.urls.add,
                 type : 'POST',
-                data : options
+                data : options,
+                success : function (model, res) {
+                    that.set({
+                        'id' : res.data._id,
+                        '_id' : res.data._id
+                    });
+                }
             })
         },
         del : function () {

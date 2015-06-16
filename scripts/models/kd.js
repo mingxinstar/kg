@@ -82,6 +82,24 @@ define(function (require) {
             return teachers.indexOf(user_id) > -1;
         },
         /**
+         * 是否是某个小孩的家长
+         * @param  {[type]}  childId [description]
+         * @return {Boolean}         [description]
+         */
+        isParent : function (childId) {
+            if (childId) {
+                var child = this.get(childId);
+
+                if (!child || !child.parent_ids) {
+                    return false;
+                }
+
+                return child.parent_ids.indexOf(this.getUserId()) > -1;
+            } else {
+                return !!this.getCurrData().child;
+            }
+        },
+        /**
          * 获取学生列表数据
          * @return {Array} 学生数据
          */

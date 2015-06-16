@@ -27,6 +27,9 @@ define(function (require) {
                 this.set('desc', this.escape('desc'));
             }
         },
+        indexOf : function (pic_key) {
+            return this.get('pics').indexOf(pic_key);
+        },
         /**
          * 删除相册
          */

@@ -1,0 +1,102 @@
+/**
+ * 宝贝考勤样式
+ *
+ * @author mingxin.huang
+ * @update 2015.06.16
+ */
+
+.app-view-checkin {
+
+}
+
+.app-view-checkin .detai-tip-area {
+    margin: 20px 0;
+}
+
+.app-view-checkin .detai-tip-area span {
+    float: left;
+    margin: 0 0 0 20px;
+}
+
+.app-view-checkin .detail-info-area {
+    padding: 20px;
+}
+
+/*请假样式*/
+.app-view-checkin-leave {
+    
+}
+
+.app-view-checkin-leave form {
+    padding: 20px;
+}
+
+.app-view-checkin-leave form textarea {
+    height: 300px;
+}
+
+.app-view-checkin-leave form > * {
+    margin: 0 0 20px;
+}
+
+.checkin-leave-reason-area {
+    height: 60px;
+    line-height: 60px;
+}
+
+.checkin-leave-reason-area * {
+    float: left;
+}
+
+.checkin-leave-reason-area label {
+    margin: 0 20px 0 0;
+}
+
+.checkin-leave-reason-area input {
+    width: 30px;
+    height: 30px;
+    margin: 13px 10px 0 0;
+}
+
+.checkin-leave-time-area {
+    
+}
+
+.checkin-leave-time-area > span {
+    float: left;
+    width: 150px;
+}
+
+.checkin-leave-time-area > div {
+    float: left;
+    width: 530px;
+}
+
+.checkin-leave-time-area li {
+    line-height: 60px;   
+    margin: 0 0 20px;
+}
+
+.checkin-leave-time-area li * {
+    float: left;
+}
+
+.checkin-leave-time-area li input {
+    width: 460px;
+    margin: 0 20px 0 0;
+}
+
+.checkin-leave-time-area li i {
+    margin: 5px 0 0;
+}
+
+.checkin-leave-time-area .btn-add-time {
+    display: block;
+    height: 60px;
+    line-height: 60px;
+}
+
+.checkin-leave-time-area .btn-add-time i {
+    margin: -6px 10px 0 0;
+    vertical-align: middle;
+}

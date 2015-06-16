@@ -1,0 +1,30 @@
+<div class="app-view-content">
+    <form class="fa-sz-24">
+        <textarea name="title" class="common-input" placeholder="请输入请假原因"></textarea>
+        <div class="checkin-leave-reason-area">
+            <span>请假类型：</span>
+            <label><input type="radio" name="reason" value="1"><span>病假</span></label>
+            <label><input type="radio" name="reason" value="2"><span>事假</span></label>
+            <label><input type="radio" name="reason" value="4"><span>其他</span></label>
+        </div>
+        <div class="checkin-leave-time-area">
+            <span>请假时间：</span>
+            <div>
+                <ul>
+                    <li class="clearfix">
+                        <input class="common-input" type="date" name="date">
+                        <i class="fa fa-minus-square fa-2x"></i>
+                    </li>
+                </ul>
+                <a href="javascript:;" class="btn-add-time color-green">
+                    <i class="fa fa-plus fa-2x"></i>
+                    <span>添加时间</span>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
+<nav class="app-view-nav-bar">
+    <a href="javascript:;" class="btn-handle-cancel">取消</a>
+    <a href="javascript:;" class="btn-handle-confirm">确定</a>
+</nav>

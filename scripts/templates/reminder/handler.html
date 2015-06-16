@@ -1,0 +1,20 @@
+<% var core = require("base/core"), kd = require("models/kd"); %>
+<div class="app-view-content">
+    <ul class="clearfix">
+        <% var teachers = kd.getTeachers(); for (var i = 0, l = teachers.length; i < l; i++) { var teacher = teachers[i]; %>
+            <li class="ava-area" data-id="<%=teacher._id%>">
+                <div class="ava ava-sm"><img src="<%=core.getAvatar(teacher._id)%>" alt="" /></div>
+                <span class="fa-sz-24 color-red"><%=teacher.name%></span>
+                <i class="fa fa-check fa-4x color-red"></i>
+            </li>
+        <% } %>
+    </ul>
+    <form class="fa-sz-24">
+        <input class="common-input" type="text" name="alarm" placeholder="请输入事件提醒时间如：午饭后，午睡后">
+        <textarea class="common-input" name="title" placeholder="请输入提醒内容"></textarea>
+    </form>
+</div>
+<nav class="app-view-nav-bar">
+    <a href="javascript:;" class="btn-handle-cancel">取消</a>
+    <a href="javascript:;" class="btn-handle-confirm">确定</a>
+</nav>

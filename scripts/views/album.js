@@ -9,8 +9,10 @@ define(function (require) {
     var backbone = require('backbone'),
         $ = require('zepto'),
         template = require('template'),
+        touch = require('touch'),
 
         core = require('base/core'),
+        kd = require('models/kd'),
         albumModel = require('models/album'),
         albumPreview = require('views/albumPreview'),
         albumTemplate = require('text!templates/album/list.html');
@@ -19,8 +21,8 @@ define(function (require) {
         tagName : 'li',
         model : albumModel,
         events : {
-            'touchstart img' : 'setRead',
-            'touchstart img' : 'preview'
+            'tap .album-pics-area img' : 'setRead',
+            'tap .album-pics-area img' : 'preview'
         },
         initialize : function () {
             this.listenTo(this.model, 'change:reader_count', this.addCount);
@@ -64,10 +66,12 @@ define(function (require) {
          * 预览图片
          */
         preview : function (e) {
-            var previewView = new albumPreview({
-                currPic : $(e.target).data('key'),
-                model : this.model
-            });
+            var type = kd.isSelf(this.model.toJSON().teacher_id) ? 'teacher' : 'parent',
+                previewView = new albumPreview({
+                    currPic : $(e.target).data('key'),
+                    type : type,
+                    model : this.model
+                });
 
             $('.app-view-album').append(previewView.render().$el);
         }

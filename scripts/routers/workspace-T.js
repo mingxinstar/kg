@@ -53,12 +53,14 @@ define(function (require) {
             });
         },
         feedback : function () {
+            require(['views/feedback'], function () {
+                changeView('feedback');
+            });
         },
         log : function () {
         },
         user : function (user_id) {
-            console.log('user : ', user_id);
-            if (kd.isSelf(user_id)) {
+            if (kd.isSelf(user_id) || kd.isParent(user_id)) {
                 require(['views/userSelf'], function (userView) {
                     var view = new userView(user_id);
 
@@ -69,7 +71,7 @@ define(function (require) {
                     var view = new userView(user_id);
 
                     view.render();
-                });                
+                });
             }
         }
     });

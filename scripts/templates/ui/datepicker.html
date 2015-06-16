@@ -1,6 +1,16 @@
-<div class="datepicker-title bg-blue fa-sz-30">
-    <%=data.titlePrefix ? data.titlePrefix : ""%> <%=data.title ? data.title : data.month%>
-</div>
+<% if (data.isSelect) { %>
+    <div class="datepicker-title bg-blue fa-sz-30 datepicker-title-select">
+        <span class="datepicker-nav" data-action="prev"><i class="fa fa-chevron-left"></i></span>
+        <span class="datepicker-month">
+            <%=data.titlePrefix ? data.titlePrefix : ""%> <%=data.title ? data.title : data.month%>
+        </span>
+        <span class="datepicker-nav" data-action="next"><i class="fa fa-chevron-right"></i></span>
+    </div>
+<% } else { %>
+    <div class="datepicker-title bg-blue fa-sz-30">
+        <%=data.titlePrefix ? data.titlePrefix : ""%> <%=data.title ? data.title : data.month%>
+    </div>
+<% } %>
 <table class="fa-sz-24">
     <thead>
         <tr>

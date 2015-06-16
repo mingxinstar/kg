@@ -7,13 +7,15 @@
 
 define(function (require) {
     var _ = require('underscore'),
+        touch = require('touch'),
+
         core = require('base/core'),
         albumView = require('views/album');
 
     var albumTeacherView = albumView.extend({
         events : {
-            'touchstart .fa-trash-o'      : 'delAlbum',
-            'touchstart .album-desc-area' : 'showEdit',
+            'tap .fa-trash-o'      : 'delAlbum',
+            'tap .album-desc-area' : 'showEdit',
             'keypress input'              : 'editDesc',
             'blur input'                  : 'hideEdit'
         },

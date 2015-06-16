@@ -22,6 +22,8 @@ define(function (require) {
         },
         initialize : function () {
             this.listenTo(this.model, 'destroy', this.remove);
+
+            this.listenTo(this.model, 'change', this.render);
         },
         render : function () {
             this.$el.html(template(itemTmpl, {data : this.model.toJSON()}));

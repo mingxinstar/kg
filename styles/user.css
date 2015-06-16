@@ -38,6 +38,11 @@
     float: right;
 }
 
+.app-view-user li .common-input {
+    width: 400px;
+    margin: -12px 0 0;
+}
+
 .app-view-user li .user-info-label {
     float: left;
 }

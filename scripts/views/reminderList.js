@@ -1,20 +1,24 @@
 /**
- * 教师提醒模块
+ * 家长事件提醒列表
  *
  * @author mingxin.huang
- * @update 2015.06.03
+ * @update 2015.06.16
  */
 
 define(function (require) {
     var backbone = require('backbone'),
+        touch = require('touch'),
 
         core = require('base/core'),
-        reminderListCollection = require('collections/reminderList-T'),
-        reminderView = require('views/reminder-T');
+        reminderList = require('collections/reminderList'),
+        reminderView = require('views/reminder');
 
     var reminderListView = backbone.View.extend({
         el : '.app-view-reminder',
-        collection : reminderListCollection,
+        collection : reminderList,
+        events : {
+            'tap .app-view-nav-bar .btn' : 'showHandler'
+        },
         initialize : function () {
             // 加载对应的css文件
             core.loadCss('reminder');
@@ -30,7 +34,20 @@ define(function (require) {
         addOne : function (model) {
             var view = new reminderView({model : model});
 
-            this.$list.append(view.render().$el);
+            if (model.toJSON().isNew) {
+                this.$list.prepend(view.render().$el);
+            } else {
+                this.$list.append(view.render().$el);
+            }
+        },
+        showHandler : function () {
+            var that = this;
+
+            require(['views/reminderHandler'], function (handlerView) {
+                var view = new handlerView();
+
+                that.$el.append(view.render().$el);
+            });
         }
     });
 

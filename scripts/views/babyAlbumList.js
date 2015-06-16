@@ -7,17 +7,27 @@
 
 define(function (require) {
     var backbone = require('backbone'),
+        template = require('template'),
+        lazyload = require('lazyload'),
 
         core = require('base/core'),
-        albumList = require('collections/babyalbumList');
+        kd = require('models/kd'),
+        albumList = require('collections/babyAlbumList'),
+        albumView = require('views/babyAlbum'),
+        baseTmpl = '\
+            <% var core = require("base/core"); %>\
+            <a href="#user/<%=data.child._id%>" class="ava ava-sm"><img src="<%=core.getAvatar(data.child._id)%>" alt="" /></a>\
+            <ul></ul>\
+        ';
 
     var albumListView = backbone.View.extend({
-        el : '.app-view-babyview',
+        el : '.app-view-babyalbum',
+        collection : albumList,
         initialize : function () {
-            core.loadCss('babyalbum');
+            core.loadCss('babyAlbum');
 
             this.$content = this.$('.app-view-content');
-            this.$content.html('<ul class="common-ul"></ul>');
+            this.$content.html(template(baseTmpl, {data : kd.getCurrData()}));
             this.$list = this.$('ul');
 
             this.listenTo(this.collection, 'add', this.addOne);
