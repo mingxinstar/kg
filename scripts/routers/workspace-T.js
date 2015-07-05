@@ -2,6 +2,7 @@ define(function (require) {
     var backbone = require('backbone'),
 
         kd = require('models/kd');
+        // swal = require('swal');
 
     var WorkSpace = backbone.Router.extend({
         routes : {
@@ -23,38 +24,45 @@ define(function (require) {
             });
         },
         album : function () {
+            changeView('album')
+            
             require(['views/albumList'], function (albumListView) {
-                changeView('album')
             });
         },
         reminder : function () {
+            changeView('reminder');
+            
             require(['views/reminderList-T'], function (reminderListView) {
-                changeView('reminder');
             });
         },
         checkin : function () {
+            changeView('checkin');
+            
             require(['views/checkin-T'], function () {
-                changeView('checkin');
             });
         },
         flowers : function () {
+            changeView('flowers');
+            
             require(['views/flowers-T'], function () {
-                changeView('flowers');
             });
         },
         msg : function () {
+            changeView('msg');
+            
             require(['views/msgList'], function () {
-                changeView('msg');
             });
         },
         contacts : function () {
+            changeView('contacts');
+            
             require(['views/contacts-T'], function () {
-                changeView('contacts');
             });
         },
         feedback : function () {
+            changeView('feedback');
+            
             require(['views/feedback'], function () {
-                changeView('feedback');
             });
         },
         log : function () {
@@ -81,6 +89,7 @@ define(function (require) {
      * @param  {String} viewName view的名称
      */
     function changeView (viewName) {
+        // swal.close();
         $('#app-wrap .app-view-'+viewName).addClass('show-app-view');
     }
     

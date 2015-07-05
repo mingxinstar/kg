@@ -16,7 +16,7 @@ define(function (require) {
         sync : core.sync,
         todayAbsence : [], //今日缺勤
         initialize : function () {
-            this.load();
+            // this.load();
         },
         load : function (date) {
             date = date || core.formatTime(null, 'yyyy-MM-dd');

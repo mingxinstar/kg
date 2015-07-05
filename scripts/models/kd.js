@@ -19,6 +19,7 @@ define(function (require) {
             
             if (storageData) {
                 this.defaults = storageData;
+                this.set(this.defaults);
             }
 
             // core.debug('storageData: ', storageData);

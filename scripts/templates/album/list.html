@@ -4,24 +4,24 @@
         <img src="<%=core.getAvatar(data.teacher_id)%>" alt="" />
     </a>
     <div>
-        <p class="color-blue fa-sz-30"><%=teacher.name%></p>
-        <p class="fa-sz-20"><%=core.getTime(data.ts*1000)%></p>
+        <p class="color-blue fa-sz-3x"><%=teacher.name%></p>
+        <p class="fa-sz-2x"><%=core.getTime(data.ts*1000)%></p>
     </div>
     <% if (isSelf) { %>
         <i class="fa fa-trash-o fa-4x"></i>
     <% } %>
 </div>
 <% if (data.desc) { %>
-    <p class="album-desc-area fa-sz-24"><%=data.desc%></p>
+    <p class="album-desc-area fa-sz-3x"><%=data.desc%></p>
     <% if (isSelf) { %>
         <div class="album-edit-area clearfix">
-            <input class="fa-sz-24" type="text" value="<%=data.desc%>">
+            <input class="fa-sz-2x" type="text" value="<%=data.desc%>">
         </div>
     <% } %>
 <% } else { %>
     <% if (isSelf) { %>
         <div class="album-edit-area show-edit clearfix">
-            <input class="fa-sz-24" type="text" placeholder="说点什么吧，按回车修改">
+            <input class="fa-sz-2x" type="text" placeholder="说点什么吧，按回车修改">
         </div>
     <% } %>
 <% } %>
@@ -36,5 +36,5 @@
 </div>
 <div class="album-tips-area">
     <i class="fa fa-eye fa-2x"></i>
-    <span class="fa-sz-20"><%=data.reader_count || 0%></span>
+    <span class="fa-sz-2x"><%=data.reader_count || 0%></span>
 </div>

@@ -52,13 +52,20 @@ define(function (require) {
          * @param  {[type]} phone [description]
          * @return {[type]}       [description]
          */
-        changePhone : function (phone) {
+        changePhone : function (phone, userId) {
             var data = {
                 "contact_info": {
                     "mobi": phone
                 },
                 type : this.type
             };
+
+            if (this.type === 'parents') {
+                var pData = {};
+                pData[userId] = data;
+
+                kd.save(pData);
+            }
 
             this.save(data, {
                 type : 'POST',

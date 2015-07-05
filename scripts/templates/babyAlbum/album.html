@@ -1,5 +1,5 @@
 <% var core = require("base/core"); %>
-<p class="fa-sz-24"><i></i><%=data.date.substr(0,10)%></p>
+<p class="fa-sz-2x"><i></i><%=data.date.substr(0,10)%></p>
 <div class="clearfix">
     <% for (var i = 0, l = data.pics.length; i < l; i++) { var pic = data.pics[i]; %>
         <img src="<%=core.getImg(pic.pkey)%>" data-key="<%=pic.pkey%>" alt="">

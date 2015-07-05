@@ -1,14 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-cmn-Hans">
 <head>
-    <title>demo</title>
+    <title>K平台</title>
     <!-- <title>K平台</title> -->
     <meta name="viewport" content="target-densitydpi=device-dpi,width=720,user-scalable=no">
     <meta name="mobileOptimized" content="720" />
     <link rel="stylesheet" type="text/css" href="styles/normalize.css">
     <link rel="stylesheet" type="text/css" href="styles/fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="scripts/ui/sweetalert/sweetalert.css">
     <link rel="stylesheet" type="text/css" href="styles/base.css">
     <link rel="stylesheet" type="text/css" href="styles/index.css">
+    <script src="scripts/base/config.js"></script>
     <script data-main="scripts/main.js" src="scripts/libs/require.js"></script>
 </head>
 <body>
@@ -24,36 +26,36 @@
             <div class="view-index-nav">
                 <ul>
                     <li class="index-nav-album">
-                        <a href="#album"><i class="fa fa-picture-o fa-white fa-sz-60"></i></a>
-                        <span class="fa-sz-30">班级相册</span>
+                        <a href="#album"><i class="fa fa-picture-o fa-white fa-sz-6x"></i></a>
+                        <span class="fa-sz-3x">班级相册</span>
                     </li>
                     <li class="index-nav-babyalbum">
-                        <a href="#babyalbum"><i class="fa fa-camera fa-white fa-sz-60"></i></a>
-                        <span class="fa-sz-30">宝贝相册</span>
+                        <a href="#babyalbum"><i class="fa fa-camera fa-white fa-sz-6x"></i></a>
+                        <span class="fa-sz-3x">宝贝相册</span>
                     </li>
                     <li class="index-nav-reminder">
-                        <a href="#reminder"><i class="fa fa-bell-o fa-white fa-sz-60"></i></a>
-                        <span class="fa-sz-30">事件提醒</span>
+                        <a href="#reminder"><i class="fa fa-bell-o fa-white fa-sz-6x"></i></a>
+                        <span class="fa-sz-3x">事件提醒</span>
                     </li>
                     <li class="index-nav-checkin">
-                        <a href="#checkin"><i class="fa fa-calendar fa-white fa-sz-60"></i></a>
-                        <span class="fa-sz-30">宝贝考勤</span>
+                        <a href="#checkin"><i class="fa fa-calendar fa-white fa-sz-6x"></i></a>
+                        <span class="fa-sz-3x">宝贝考勤</span>
                     </li>
                     <li class="index-nav-flowers">
-                        <a href="#flowers"><i class="fa fa-heart-o fa-white fa-sz-60"></i></a>
-                        <span class="fa-sz-30">红花榜</span>
+                        <a href="#flowers"><i class="fa fa-heart-o fa-white fa-sz-6x"></i></a>
+                        <span class="fa-sz-3x">红花榜</span>
                     </li>
                     <li class="index-nav-msg">
-                        <a href="#msg"><i class="fa fa-comment-o fa-white fa-sz-60"></i></a>
-                        <span class="fa-sz-30">班级消息</span>
+                        <a href="#msg"><i class="fa fa-comment-o fa-white fa-sz-6x"></i></a>
+                        <span class="fa-sz-3x">班级消息</span>
                     </li>
                     <li class="index-nav-contacts">
-                        <a href="#contacts"><i class="fa fa-list-alt fa-white fa-sz-60"></i></a>
-                        <span class="fa-sz-30">通讯录</span>
+                        <a href="#contacts"><i class="fa fa-list-alt fa-white fa-sz-6x"></i></a>
+                        <span class="fa-sz-3x">通讯录</span>
                     </li>
                     <li class="index-nav-feedback"  >
-                        <a href="#feedback"><i class="fa fa-envelope-o fa-white fa-sz-60"></i></a>
-                        <span class="fa-sz-30">意见反馈</span>
+                        <a href="#feedback"><i class="fa fa-envelope-o fa-white fa-sz-6x"></i></a>
+                        <span class="fa-sz-3x">意见反馈</span>
                     </li>
                 </ul>
             </div>
@@ -98,10 +100,7 @@
         <!-- 班级信息模块 -->
         <section class="app-view-msg">
             <div class="app-view-content"></div>
-            <nav class="app-view-nav-bar bg-blue">
-                <a href="#" class="fa fa-home fa-white"></a>
-                <span href="javascript:;" class="btn btn-success">创建通知</span>
-            </nav>
+            <nav class="app-view-nav-bar bg-blue"><a href="#" class="fa fa-home fa-white"></a>班级消息</nav>
         </section>
 
         <!-- 通讯录模块 -->

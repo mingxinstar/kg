@@ -6,8 +6,7 @@
  */
 
 define(function (require) {
-    var _ = require('underscore'),
-        config = require('base/config');
+    var _ = require('underscore');
 
     /**
      * 获取对应的请求或者文件地址
@@ -18,7 +17,7 @@ define(function (require) {
     function getRoot (url, type) {
         type = type || 'api';
 
-        return 'http://'+config.root[type]+(type === 'api' ? '/crm':'')+'/'+url;
+        return 'http://'+CONFIG.root[type]+(type === 'api' ? '/crm':'')+'/'+url;
     }
 
     /**
@@ -26,7 +25,7 @@ define(function (require) {
      * @return {Boolean} [description]
      */
     function isRelease () {
-        return config.mode === 'release';
+        return CONFIG.mode === 'release';
     }
 
     /**
@@ -201,8 +200,9 @@ define(function (require) {
     /**
      * 加载css文件
      * @param  {String} file css文件名
+     * @param {Boolean} isScript 是否是scritpt文件夹下
      */
-    function loadCss (file) {
+    function loadCss (file, isScript) {
         if (loadedCss.indexOf(file) > -1) {
             return;
         }
@@ -210,7 +210,7 @@ define(function (require) {
         loadedCss.push(file);
 
         var $head = $('head'),
-            path = '/styles/'+file+'.css';
+            path = (isScript ? '/scripts/' : '/styles/')+file+'.css';
 
         if (!isRelease()) {
             path += ('?_='+new Date().getTime());

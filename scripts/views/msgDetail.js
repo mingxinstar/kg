@@ -20,7 +20,7 @@ define(function (require) {
         className : 'app-view-handler app-view-msg-detail',
         events : {
             'tap .btn-handle-cancel' : 'close',
-            'change input' : 'vote',
+            'tap .btn-vote' : 'vote',
             'tap img' : 'preview'
         },
         initialize : function (msgId) {
@@ -49,9 +49,9 @@ define(function (require) {
             this.remove();
         },
         vote : function (e) {
-            var $this = $(e.currentTarget),
-                value = $this.val();
-                
+            var $input = this.$('input:checked'),
+                value = $input.val();
+            
             this.model.vote(value);
         },
         preview : function (e) {

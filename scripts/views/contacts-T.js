@@ -13,7 +13,7 @@ define(function (require) {
 
         baseTmpl = '\
             <div class="app-view-top-nav">\
-                <ul class="clearfix fa-sz-24">\
+                <ul class="clearfix fa-sz-2x">\
                     <li class="active" data-type="parent"><span>学生</span></li>\
                     <li data-type="teacher"><span>教师</span></li>\
                 </ul>\

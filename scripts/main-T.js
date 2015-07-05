@@ -8,7 +8,8 @@ require.config({
         'touch'                 : 'libs/zepto/touch',
         'underscore'            : 'libs/underscore',
         'text'                  : 'libs/text',
-        'weixin'                : 'libs/weixin'
+        'weixin'                : 'libs/weixin',
+        'swal'                  : 'ui/sweetalert/sweetalert'
     },
     shim : {
         'backbone' : {
@@ -27,7 +28,7 @@ require.config({
             exports : '$.template'
         }
     },
-    urlArgs : '_='+new Date().getTime()
+    urlArgs : 'v='+CONFIG.version
 });
 
 require(['backbone', 'models/kd', 'routers/workspace-T'], function (backbone, kd, workspace) {

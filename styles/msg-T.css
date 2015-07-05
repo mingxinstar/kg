@@ -1,4 +1,4 @@
-/**
+`/**
  * 教师专属消息相关样式
  *
  * @author mingxin.huang
@@ -64,7 +64,7 @@
 }
 
 .app-view-msg-create .vote-area {
-    
+    display: none;
 }
 
 .app-view-msg-create .vote-area li {

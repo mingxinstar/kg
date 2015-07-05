@@ -28,6 +28,9 @@ define(function (require) {
 
             this.collection.load();
         },
+        refresh : function () {
+            this.collection.load();
+        },
         addOne : function (model) {
             var view = new vocateView({model : model});
 

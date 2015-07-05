@@ -1,5 +1,5 @@
 <% var core = require("base/core"), kd = require("models/kd"); %>
-<div class="app-view-content fa-sz-24">
+<div class="app-view-content fa-sz-2x">
     <ul>
         <li class="user-info-ava clearfix">
             <span class="user-info-label">头像</span>
@@ -24,13 +24,15 @@
         </li>
         <% if (data.parent_ids) { %>
             <% for (var i = 0, l = data.parent_ids.length; i < l; i++) { var parent = kd.get(data.parent_ids[i]); %>
-                <li class="clearfix" data-type="phone">
+                <li class="clearfix" data-type="phone" data-id=<%=data.parent_ids[i]%>>
                     <span class="user-info-label"><%=kd.getCall(parent.relation)%></span>
                     <% var phone = parent.contact_info ? (parent.contact_info.mobi || "") : ""; %>
                     <% if (phone) { %>
                         <% if (kd.isSelf(data.parent_ids[i])) { %>
                             <div class="user-info-edit">
-                                <a class="user-info-phone" href="tel:<%=phone%>"><i class="fa fa-mobile fa-2x color-green"></i><span><%=phone%></span></a>
+                                <a class="user-info-phone" href="tel:<%=phone%>">
+                                    <i class="fa fa-mobile fa-2x color-green"></i><span><%=phone%></span>
+                                </a>
                                 <i class="fa fa-chevron-right"></i>
                             </div>
                         <% } else { %>

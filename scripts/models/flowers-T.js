@@ -8,7 +8,8 @@
 define(function (require) {
     var backbone = require('backbone'),
 
-        core = require('base/core');
+        core = require('base/core'),
+        kd = require('models/kd');
 
     var flowerModel = backbone.Model.extend({
         urls : {
@@ -16,8 +17,19 @@ define(function (require) {
             del : 'class/flower/del/{child_id}'
         },
         sync : core.sync,
+        defaults : {
+            teacher_id : '',
+            child_ids : []
+        },
         initialize : function () {
-            this.set('id', this.get('teacher_id'));
+            if (this.get('teacher_id')) {
+                this.set('id', this.get('teacher_id'));
+            } else {
+                this.set({
+                    id : kd.getUserId(),
+                    teacher_id : kd.getUserId()
+                });
+            }
         },
         add : function (childId) {
             var childIds = this.get('child_ids');

@@ -9,6 +9,7 @@ define(function (require) {
     var backbone = require('backbone'),
         template = require('template'),
         _ = require('underscore'),
+        touch = require('touch'),
 
         core = require('base/core'),
         wx = require('base/wx'),
@@ -36,12 +37,13 @@ define(function (require) {
         className : 'app-view-handler app-view-msg-create',
         collection : msgList,
         events : {
-            'touchend .app-view-nav-bar .btn-handle-cancel' : 'close',
-            'touchend .app-view-nav-bar .btn-handle-confirm' : 'submit',
-            'touchend .pic-select' : 'chooseImage',
-            'touchend .pic-select-area .fa-minus-circle' : 'delImg',
-            'touchend .btn-add-vote' : 'addVote',
-            'touchend .vote-area .fa-times' : 'delVote'
+            'tap .app-view-nav-bar .btn-handle-cancel' : 'close',
+            'tap .app-view-nav-bar .btn-handle-confirm' : 'submit',
+            'tap .pic-select' : 'chooseImage',
+            'tap .pic-select-area .fa-minus-circle' : 'delImg',
+            'tap .btn-add-vote' : 'addVote',
+            'tap .vote-area .fa-times' : 'delVote',
+            'change .vote-toggle-area input' : 'toggleVote'
         },
         localIds : [],
         initialize : function () {
@@ -52,6 +54,7 @@ define(function (require) {
             this.$form = this.$('form');
 
             this.$voteArea = this.$('.vote-area');
+            this.$voteList = this.$voteArea.find('ul');
 
             wx.init();
         },
@@ -127,9 +130,9 @@ define(function (require) {
             $li.remove();
         },
         addVote : function () {
-            var $votes = this.$voteArea.find('li');
+            var $votes = this.$voteList.find('li');
 
-            this.$voteArea.append(template(voteTmpl, {index : $votes.length+1}));
+            this.$voteList.append(template(voteTmpl, {index : $votes.length+1}));
         },
         delVote : function (e) {
             var $this = $(e.currentTarget),
@@ -137,7 +140,7 @@ define(function (require) {
 
             $li.remove();
 
-            var $votes = this.$voteArea.find('li');
+            var $votes = this.$voteList.find('li');
 
             _.each($votes, function (vote, index) {
                 var $currVote = $(vote),
@@ -146,6 +149,21 @@ define(function (require) {
                 $currVote.find('span').text(currIndex);
                 $currVote.find('input').attr('name', 'vote-item-'+(index+1));
             });
+        },
+        /**
+         * 切换显示投票区域
+         * @param  {[type]} e [description]
+         * @return {[type]}   [description]
+         */
+        toggleVote : function (e) {
+            var $this = $(e.currentTarget),
+                value = parseInt($this.val(), 10);
+
+            if (value === 0) {
+                this.$voteArea.hide();
+            } else {
+                this.$voteArea.show();
+            }
         }
     });
 

@@ -81,8 +81,9 @@
     float: left;
 }
 
-.checkin-leave-time-area li input {
-    width: 460px;
+.checkin-leave-time-area li span {
+    display: inline-block;
+    width: 400px;
     margin: 0 20px 0 0;
 }
 

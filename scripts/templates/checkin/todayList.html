@@ -3,10 +3,10 @@
     <a href="#user/<%=data.child_id%>" class="ava ava-sm">
         <img src="<%=core.getAvatar(data.child_id)%>" alt="" />
     </a>
-    <span class="fa-sz-20 <%=child.sex === 0 ? "color-pink" : "color-blue"%>"><%=child.name%></span>
+    <span class="fa-sz-2x <%=child.sex === 0 ? "color-pink" : "color-blue"%>"><%=child.name%></span>
 </div>
 <div class="checkin-list-right">
-    <div class="checkin-info-area fa-sz-24">
+    <div class="checkin-info-area fa-sz-2x">
         <p><span>类型</span>: <%=data.reasonTip%></p>
         <% if (data.reason !== 0 && data.parent_id) { var parent = kd.get(data.parent_id), teacher = data.teacher_id ? kd.get(data.teacher_id) : null; %>
             <p><span>原因</span>: <%=data.title%></p>

@@ -3,9 +3,9 @@
     <a href="#user/<%=data.child_id%>" class="ava ava-sm">
         <img src="<%=core.getAvatar(data.child_id)%>" alt="" />
     </a>
-    <span class="fa-sz-20 <%=child.sex === 0 ? "color-pink" : "color-blue"%>"><%=child.name%></span>
+    <span class="fa-sz-2x <%=child.sex === 0 ? "color-pink" : "color-blue"%>"><%=child.name%></span>
 </div>
-<div class="vocate-list-right fa-sz-24">
+<div class="vocate-list-right fa-sz-2x">
     <p><span class="label">类型</span>: <span><%=data.reasonTip%></span><span class="vocate-time"><%=core.getTime(data.ts*1000)%></span></p>
     <p><span class="label">原因</span>: <span><%=data.title%></span></p>
     <p><span class="label">请假人</span>: <span><%=kd.getCall(parent.relation)%></span></p>

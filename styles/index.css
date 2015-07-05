@@ -39,13 +39,13 @@
 .view-index-nav li {
     float: left;
     width: 240px;
-    height: 240px;
     text-align: center;
 }
 .view-index-nav li a {
     display: block;
     width: 180px;
     height: 180px;
+    line-height: 220px;
     margin: 30px auto 10px;
     background-color: #73a839;
     -webkit-border-radius: 50%;
@@ -80,9 +80,3 @@
 .view-index-nav .index-nav-log a {
     background-color: #c5aecb;
 }
-.view-index-nav li i {
-    margin: 60px;
-}
-/*.view-index-nav li span {
-font-size: 20px;
-}*/

@@ -11,7 +11,7 @@ define(function (require) {
 
         core = require('base/core'),
         baseTmpl = '\
-            <form class="fa-sz-24">\
+            <form class="fa-sz-2x">\
                 <textarea name="content" class="common-input" placeholder="请填写您的宝贵意见"></textarea>\
                 <input type="text" class="common-input" name="from" placeholder="联系方式" />\
                 <p><a href="javascript:;" class="btn btn-success">确定</a></p>\

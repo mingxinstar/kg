@@ -14,7 +14,7 @@ define(function (require) {
         monthList = require('collections/flowersMonthList'),
         babyTmpl = '\
             <div id="flowers-datepcker-area"></div>\
-            <div class="flowers-count-info fa-sz-24"></div>\
+            <div class="flowers-count-info fa-sz-2x"></div>\
         ';
 
     var babyView = backbone.View.extend({

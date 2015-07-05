@@ -1,0 +1,8 @@
+<% for (var key in data) {  var days = data[key]; %>
+    <% for (var i = 0, l = days.length; i < l; i++) { %>
+        <li class="clearfix">
+            <span><%=key+"-"+days[i]%></span>
+            <i class="fa fa-minus-square fa-2x"></i>
+        </li>
+    <% } %>
+<% } %>

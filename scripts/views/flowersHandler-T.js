@@ -25,7 +25,7 @@ define(function (require) {
             'tap .btn-handle-confirm' : 'confirm'
         },
         initialize : function () {
-            this.model = todayList.get(kd.getUserId());
+            this.model = todayList.get(kd.getUserId()) || new todayModel();
         },
         render : function () {
             var allChildren = kd.getChildren(),
@@ -63,6 +63,7 @@ define(function (require) {
             }
 
             this.model.add(childIds);
+            todayList.add(this.model);
 
             this.close();
         }

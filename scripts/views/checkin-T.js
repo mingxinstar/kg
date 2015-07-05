@@ -41,11 +41,17 @@ define(function (require) {
             viewName = viewName || 'today';
 
             if (viewName === 'today') {
-                require(['views/checkinTodayList-T']);
+                require(['views/checkinTodayList-T'], function (todayListView) {
+                    todayListView.refresh();
+                });
             } else if (viewName === 'vocate') {
-                require(['views/checkinVocateList-T']);
+                require(['views/checkinVocateList-T'], function (vocateListView) {
+                    // vocateListView.refresh();
+                });
             } else {
-                require(['views/checkinReport-T']);
+                require(['views/checkinReport-T'], function (reportView) {
+                    reportView.refresh();
+                });
             }
         },
         /**

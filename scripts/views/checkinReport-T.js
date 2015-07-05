@@ -18,7 +18,7 @@ define(function (require) {
         reportTmpl = '\
             <div class="report-month-select-area clearfix">\
                 <span class="select-arrow" data-action="prev"><i class="fa fa-chevron-left fa-2x"></i></span>\
-                <span class="select-month fa-sz-30"><%=month%></span>\
+                <span class="select-month fa-sz-3x"><%=month%></span>\
                 <span class="select-arrow" data-action="next"><i class="fa fa-chevron-right fa-2x"></i></span>\
             </div>\
             <ul></ul>\
@@ -28,9 +28,9 @@ define(function (require) {
             <% for (var i = 0, l = list.length; i < l; i++) { var data = list[i], child= kd.get(data.child_id); %>\
                 <li data-id="<%=data.child_id%>">\
                     <div class="ava ava-xs"><img src="<%=core.getAvatar()%>" alt="" /></div>\
-                    <span class="fa-sz-24 <%=child.sex === 0 ? "color-pink" : "color-blue"%>"><%=child.name%></span>\
+                    <span class="fa-sz-2x <%=child.sex === 0 ? "color-pink" : "color-blue"%>"><%=child.name%></span>\
                     <i class="fa fa-chevron-right fa-2x"></i>\
-                    <span class="absence-count fa-sz-24">缺勤<b class="color-red"><%=data.count%></b>天</span>\
+                    <span class="absence-count fa-sz-2x">缺勤<b class="color-red"><%=data.count%></b>天</span>\
                 </li>\
             <% } %>\
         ';
@@ -56,8 +56,9 @@ define(function (require) {
             this.$list = this.$('ul');
 
             this.listenTo(this.collection, 'reset', this.render);
-
-            this.collection.load();
+        },
+        refresh : function () {
+            this.collection.load(this.currentMonthStr);
         },
         render : function () {
             this.$list.html(template(reportListTmpl, {list : this.collection.toJSON()}));
@@ -82,8 +83,6 @@ define(function (require) {
             this.currentMonthStr = year + '-' + month;
 
             this.$('.select-month').text(this.currentMonthStr);
-
-            this.collection.load(this.currentMonthStr);
         },
         /**
          * 显示详细页
@@ -93,7 +92,7 @@ define(function (require) {
                 childId = $li.data('id'),
                 currDetailView = new detailView(childId, this.currentMonthStr);
 
-            $('.app-view-checkin').append(currDetailView.render().$el);
+            $('.app-view-checkin').append(currDetailView.$el);
         }
     });
 

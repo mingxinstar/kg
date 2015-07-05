@@ -41,7 +41,8 @@ define(function (require) {
             this.$el.html(template(previewTmpl, {data : data}));
             this.$pagin = this.$('.album-preview-pagin');
             this.$list = this.$('ul');
-            this.$list.css('marginLeft', this.currIndex*-720);
+
+            this.changePos();
 
             return this;
         },
@@ -60,7 +61,7 @@ define(function (require) {
 
             this.currIndex = index;
 
-            this.$list.css('marginLeft', -720*this.currIndex);
+            this.changePos();
 
             this.setPagin();
         },
@@ -73,9 +74,14 @@ define(function (require) {
 
             this.currIndex = index;
 
-            this.$list.css('marginLeft', -720*this.currIndex);
+            this.changePos();
 
             this.setPagin();
+        },
+        changePos : function () {
+            this.$list.css('transform', 'translateX('+(-720*this.currIndex)+'px)');
+            this.$list.css('-ms-transform', 'translateX('+(-720*this.currIndex)+'px)');
+            this.$list.css('-webkit-transform', 'translateX('+(-720*this.currIndex)+'px)');
         },
         /**
          * 设置页码
@@ -111,7 +117,7 @@ define(function (require) {
 
             if (this.currIndex >= length) {
                 this.currIndex = length -1 ;
-                this.$list.css('marginLeft', -720*this.currIndex);
+                this.changePos();
             }
 
             this.toggleDel();

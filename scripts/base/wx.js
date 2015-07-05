@@ -7,31 +7,41 @@
 
 define(function (require) {
     var weixin = require('weixin'),
-        config = require('base/config'),
         core = require('base/core');
 
-    var ACTION = 'http://'+config.root.api+'/wx/signature/sign?timestamp={timestampl}&url={url}';
+    var ACTION = 'http://'+CONFIG.root.api+'/wx/signature/sign?timestamp={timestampl}&url={url}';
 
 
     var _isReady = false;
     // 配置微信相关设置
     function init () {
-        var url = location.href.split('#')[0],
+        var url = encodeURIComponent(location.href.split('#')[0]),
             ts = Math.round(new Date().getTime()/1000),
             fn = function (res) {
-                var data = res.data;
+                var data = res.data,
+                    config = {
+                        debug : true,
+                        appId : CONFIG.appId,
+                        timestamp : ts,
+                        nonceStr : data.noncestr,
+                        signature : data.signature,
+                        jsApiList : ['chooseImage', 'previewImage', 'uploadImage']
+                    };
 
-                weixin.config({
-                    debug : true,
-                    appId : config.appId,
-                    timestamp : ts,
-                    nonceStr : data.nonceStr,
-                    signature : data.signature,
-                    jsApiList : ['chooseImage']
-                });
+                weixin.config(config);
 
                 weixin.ready(function () {
                     core.debug('ready');
+                });
+
+                weixin.error(function (wres) {
+                    alert(JSON.stringify(config));
+
+                    alert(url)
+
+                    alert(location.href.split('#')[0])
+
+                    alert(JSON.stringify(wres));
                 });
             };
 

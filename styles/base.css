@@ -35,20 +35,17 @@ html, body {
 .fa-white {
     color: #FFF;
 }
-.fa-sz-20 {
-    font-size: 20px;
+.fa-sz-2x {
+    font-size: 2em;
 }
-.fa-sz-24 {
-    font-size: 24px;
+.fa-sz-3x {
+    font-size: 3em;
 }
-.fa-sz-30 {
-    font-size: 30px;
+.fa-sz-4x {
+    font-size: 4em;
 }
-.fa-sz-40 {
-    font-size: 40px;
-}
-.fa-sz-60 {
-    font-size: 60px;
+.fa-sz-6x {
+    font-size: 6em;
 }
 .font-bold {
   font-weight: bold;
@@ -402,6 +399,7 @@ textarea.common-input {
     background-color: #F5F5F5;
     overflow-x: hidden;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 /*页面通用列表样式*/

@@ -24,43 +24,51 @@ define(function (require) {
             });
         },
         album : function () {
+            changeView('album')
+            
             require(['views/albumList'], function (albumListView) {
-                changeView('album')
             });
         },
         babyalbum : function () {
+            changeView('babyalbum')
+            
             require(['views/babyAlbumList'], function (albumListView) {
-                changeView('babyalbum')
             });
         },
         reminder : function () {
+            changeView('reminder');
+            
             require(['views/reminderList'], function (reminderListView) {
-                changeView('reminder');
             });
         },
         checkin : function () {
+            changeView('checkin');
+            
             require(['views/checkin'], function () {
-                changeView('checkin');
             });
         },
         flowers : function () {
+            changeView('flowers');
+            
             require(['views/flowers'], function () {
-                changeView('flowers');
             });
         },
         msg : function () {
+            changeView('msg');
+            
             require(['views/msgList'], function () {
-                changeView('msg');
             });
         },
         contacts : function () {
+            changeView('contacts');
+            
             require(['views/contacts'], function () {
-                changeView('contacts');
             });
         },
         feedback : function () {
+            changeView('feedback');
+            
             require(['views/feedback'], function () {
-                changeView('feedback');
             });
         },
         log : function () {

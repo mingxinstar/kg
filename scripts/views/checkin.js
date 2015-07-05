@@ -16,13 +16,13 @@ define(function (require) {
 
         detailTmpl = '\
             <div id="detail-picker-container"></div>\
-            <div class="detai-tip-area fa-sz-20 clearfix">\
+            <div class="detai-tip-area fa-sz-2x clearfix">\
                 <span class="color-blue">缺勤</span>\
                 <span class="color-red">病假</span>\
                 <span class="color-green">事假</span>\
                 <span class="color-orange">其他</span>\
             </div>\
-            <div class="detail-info-area fa-sz-24"></div>\
+            <div class="detail-info-area fa-sz-2x"></div>\
         ',
         infoTmpl = '\
             <% var core = require("base/core"), kd = require("models/kd"), teacher = kd.get(data.teacher_id); %>\
@@ -41,7 +41,7 @@ define(function (require) {
         el : '.app-view-checkin',
         collection : detailList,
         events : {
-            'tap .date-selected' : 'showInfo',
+            'tap #detail-picker-container .date-selected' : 'showInfo',
             'tap .app-view-nav-bar .btn' : 'showHandler'
         },
         initialize : function () {
@@ -73,8 +73,6 @@ define(function (require) {
             this.collection.load();
         },
         renderDatePicker : function () {
-            core.debug('renderDatePicker : ', this.collection.toJSON());
-
             var list = this.collection.toJSON();
 
             for (var i = 0, l = list.length; i < l; i++) {

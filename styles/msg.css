@@ -102,6 +102,10 @@
     margin: 5px 10px 0 0;
 }
 
+.detail-vote-area > div {
+    text-align: center;
+}
+
 .vote-progress-area {
     height: 40px;
     line-height: 40px;
@@ -111,7 +115,7 @@
 .vote-progress-area .progress-area {
     float: left;
     position: relative;
-    width: 545px;
+    width: 540px;
     height: 40px;
     line-height: 40px;
     margin: 0 10px 0 0;

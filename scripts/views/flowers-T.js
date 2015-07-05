@@ -13,7 +13,7 @@ define(function (require) {
 
         baseTmpl = '\
             <div class="app-view-top-nav">\
-                <ul class="clearfix fa-sz-24">\
+                <ul class="clearfix fa-sz-2x">\
                     <li class="active" data-type="today"><span>今日红花</span></li>\
                     <li data-type="week"><span>本周红花</span></li>\
                     <li data-type="month"><span>本月红花</span></li>\

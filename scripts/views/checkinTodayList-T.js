@@ -19,7 +19,7 @@ define(function (require) {
 
     var todayTmpl = '\
         <div class="date-picker-area clearfix">\
-            <input type="date" class="fa-sz-24" value="<%=today%>">\
+            <input type="date" class="fa-sz-2x" value="<%=today%>">\
             <i class="fa fa-chevron-right fa-2x"></i>\
         </div>\
         <ul class="common-ul"></ul>\
@@ -29,7 +29,8 @@ define(function (require) {
         el : '.checkin-panel-today',
         collection : checkinList,
         events : {
-            'change input' : 'refresh'
+            'change input' : 'refresh',
+            'blur input' : 'refresh'
         },
         initialize : function () {
             this.listenTo(this.collection, 'reset', this.reset);

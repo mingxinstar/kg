@@ -1,5 +1,5 @@
 <% if (data.isSelect) { %>
-    <div class="datepicker-title bg-blue fa-sz-30 datepicker-title-select">
+    <div class="datepicker-title bg-blue fa-sz-3x datepicker-title-select">
         <span class="datepicker-nav" data-action="prev"><i class="fa fa-chevron-left"></i></span>
         <span class="datepicker-month">
             <%=data.titlePrefix ? data.titlePrefix : ""%> <%=data.title ? data.title : data.month%>
@@ -7,11 +7,11 @@
         <span class="datepicker-nav" data-action="next"><i class="fa fa-chevron-right"></i></span>
     </div>
 <% } else { %>
-    <div class="datepicker-title bg-blue fa-sz-30">
+    <div class="datepicker-title bg-blue fa-sz-3x">
         <%=data.titlePrefix ? data.titlePrefix : ""%> <%=data.title ? data.title : data.month%>
     </div>
 <% } %>
-<table class="fa-sz-24">
+<table class="fa-sz-2x">
     <thead>
         <tr>
             <th>日</th>

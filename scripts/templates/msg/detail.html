@@ -1,11 +1,11 @@
 <% var core = require("base/core"), kd = require("models/kd"), teacher = kd.get(data.teacher_id); %>
-<div class="app-view-content fa-sz-24">
+<div class="app-view-content fa-sz-2x">
     <div class="detail-info-area clearfix">
         <div class="ava-area detail-info-left">
             <a href="#user/<%=data.teacher_id%>" class="ava ava-sm">
                 <img src="<%=core.getAvatar(data.teacher_id)%>" alt="">
             </a>
-            <span class="fa-sz-24 color-red"><%=teacher.name%></span>
+            <span class="color-red"><%=teacher.name%></span>
         </div>
         <div class="detail-info-right">
             <p><%=core.getTime(data.ts*1000)%></p>
@@ -29,19 +29,22 @@
                 <% for (var i = 0; i < items.length; i++) { %>
                 <% var currPoll = poll[i+1] || [], count = currPoll.length, percent = (count/model.getVoteCount()*100).toFixed(1)+"%"; %>
                     <li>
-                        <% if (!model.hasVoted()) { %>
+                        <% if (!model.hasVoted() && !kd.isTeacher()) { %>
                             <label class="clearfix"><input type="radio" name="voteRadio" value="<%=i+1%>" /><span><%=items[i]%></span></label>
                         <% } %>
                         <div class="vote-progress-area clearfix">
                             <span class="progress-area">
                                 <i class="progress-bar" style="width : <%=percent%>;"></i>
-                                <span class="progress-tip fa-sz-20"><%=count%>票</span>
+                                <span class="progress-tip"><%=count%>票</span>
                             </span>
                             <span class="percent-tip"><%=percent%></span>
                         </div>
                     </li>
                 <% } %>
             </ul>
+            <% if (!model.hasVoted() && !kd.isTeacher()) { %>
+                <div><a href="javascript:;" class="btn btn-success btn-vote">我来投票</a></div>
+            <% } %>
         </div> 
     <% } %>
 </div>

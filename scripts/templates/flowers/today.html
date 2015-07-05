@@ -3,7 +3,7 @@
 <div class="today-list-left">
     <% var teacher = kd.get(data.teacher_id); %>
     <a href="#user/<%=data.teacher_id%>" class="ava ava-sm"><img src="<%=core.getAvatar(data.teacher_id)%>" alt=""></a>
-    <span class="fa-sz-24 color-red"><%=teacher.name%></span>
+    <span class="fa-sz-2x color-red"><%=teacher.name%></span>
 </div>
 <div class="today-list-right">
     <ul class="today-children-list <%=data.isShowDel ? "show-del" : ""%>">
@@ -11,7 +11,7 @@
         <% for (var i = 0, l = data.child_ids.length; i < l; i++) { var child = kd.get(data.child_ids[i]); %>
             <li data-id=<%=child._id%>>
                 <a href="#user/<%=child._id%>" class="ava ava-xs"><img src="<%=core.getAvatar(child._id)%>" alt="" /></a>
-                <span class="fa-sz-20 <%=child.sex === 0 ? "color-pink" : "color-blue"%>"><%=child.name%></span>
+                <span class="fa-sz-2x <%=child.sex === 0 ? "color-pink" : "color-blue"%>"><%=child.name%></span>
                 <% if (isSelf) { %>
                     <i class="fa fa-times-circle fa-3x color-red"></i>
                 <% } %>

@@ -60,6 +60,7 @@ define(function (require) {
 
             $editArea.hide();
             $li.append('<input type="text" class="common-input" name="'+type+'" />');
+            $li.find('input').focus();
 
         },
         handleKeyPress : function (e) {
@@ -69,9 +70,16 @@ define(function (require) {
 
             var $this = $(e.currentTarget),
                 name = $this.attr('name'),
-                value = $this.val();
+                value = $this.val(),
+                fnName = 'change'+name[0].toUpperCase()+name.substr(1);
 
-            this.model['change'+name[0].toUpperCase()+name.substr(1)](value);
+            if (name === 'phone' && !kd.isTeacher()) {
+                var userId = $this.parents('li').data('id');
+
+                this.model[fnName](value, userId);
+            } else {
+                this.model[fnName](value);
+            }
         },
         changeSex : function (e) {
             var $this = $(e.currentTarget),

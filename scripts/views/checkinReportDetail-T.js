@@ -16,13 +16,13 @@ define(function (require) {
         detailTmpl = '\
             <div class="app-view-content">\
                 <div id="detail-picker-container"></div>\
-                <div class="detai-tip-area fa-sz-20 clearfix">\
+                <div class="detai-tip-area fa-sz-2x clearfix">\
                     <span class="color-blue">缺勤</span>\
                     <span class="color-red">病假</span>\
                     <span class="color-green">事假</span>\
                     <span class="color-orange">其他</span>\
                 </div>\
-                <div class="detail-info-area fa-sz-24"></div>\
+                <div class="detail-info-area fa-sz-2x"></div>\
             </div>\
             <nav class="app-view-nav-bar">\
                 <a href="javascript:;" class="btn-handle-cancel">关闭</a>\
@@ -65,8 +65,6 @@ define(function (require) {
             this.collection.load();
         },
         renderDatePicker : function () {
-            core.debug('renderDatePicker : ', this.collection.toJSON());
-
             var list = this.collection.toJSON();
 
             for (var i = 0, l = list.length; i < l; i++) {
@@ -88,6 +86,8 @@ define(function (require) {
 
                 this.dpView.mark(date.getDate(), color);
             }
+
+            this.$('.td-day-'+new Date().getDate()).trigger('tap');
         },
         close : function () {
             this.remove();

@@ -8,6 +8,7 @@
 define(function (require) {
     var _ = require('underscore'),
         touch = require('touch'),
+        swal = require('swal'),
 
         core = require('base/core'),
         albumView = require('views/album');
@@ -16,8 +17,8 @@ define(function (require) {
         events : {
             'tap .fa-trash-o'      : 'delAlbum',
             'tap .album-desc-area' : 'showEdit',
-            'keypress input'              : 'editDesc',
-            'blur input'                  : 'hideEdit'
+            'keypress input'       : 'editDesc',
+            'blur input'           : 'hideEdit'
         },
         initialize : function () {
             // 执行原型的初始化方法
@@ -54,7 +55,7 @@ define(function (require) {
             var $descArea = this.$('.album-desc-area');
 
             if ($descArea.length === 0) {
-                this.$('.album-edit-area').before('<p class="album-desc-area fa-sz-24">'+this.model.get('desc')+'</p>');
+                this.$('.album-edit-area').before('<p class="album-desc-area fa-sz-2x">'+this.model.get('desc')+'</p>');
             } else {
                 $descArea.text(this.model.get('desc'));
             }
@@ -64,8 +65,18 @@ define(function (require) {
         // 删除相册
         delAlbum : function () {
             core.debug('delAlbum');
+            var that = this;
 
-            this.model.delAlbum();
+            swal({
+                title : '确定删除当前这条相册动态？',
+                type : 'warning',
+                showCancelButton : true,
+                cancelButtonText : '取消',
+                confirmButtonText : '确定'
+            }, function () {
+                that.model.delAlbum();
+            });
+
         },
         /**
          * 显示编辑框
@@ -92,8 +103,6 @@ define(function (require) {
          * @param  {[type]} e [description]
          */
         editDesc : function (e) {
-            core.debug('editDesc');
-
             if (e.which !== 13) {
                 return;
             }
