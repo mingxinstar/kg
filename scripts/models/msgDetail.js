@@ -14,7 +14,8 @@ define(function (require) {
     var detailModel = backbone.Model.extend({
         urls : {
             info : 'class/msg_down/info/{msg_id}',
-            vote : 'class/msg_down/vote/{msg_id}/{index}'
+            vote : 'class/msg_down/vote/{msg_id}/{index}',
+            chat : 'class/msg_down/chat/{msg_id}'
         },
         sync : core.sync,
         parse : function (res) {
@@ -47,6 +48,7 @@ define(function (require) {
                     index : value
                 }
             });
+
             this.trigger('change');
         },
         hasVoted : function () {
@@ -74,6 +76,38 @@ define(function (require) {
             }
 
             return pollCount || 1;
+        },
+        /**
+         * 发言
+         * @param  {String} content [description]
+         */
+        chat : function (content) {
+            var chats = this.get('chats') || [],
+                userData = kd.getCurrData(),
+                chatData = {
+                    content : content,
+                    ts : new Date().getTime()/1000
+                };
+
+            if (kd.isTeacher()) {
+                chatData._id = userData._id;
+            } else {
+                chatData._id = userData.child._id;
+                chatData.role = userData.relation;
+            };
+
+            chats.unshift(chatData);
+
+            this.save({'chats' : chats}, {
+                url : this.urls.chat,
+                type : 'POST',
+                data : {
+                    msg_id : this.get('id'),
+                    content : content
+                }
+            });
+
+            this.trigger('change');
         }
     });
 

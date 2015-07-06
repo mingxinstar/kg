@@ -146,6 +146,39 @@
     margin-bottom: 150px!important;
 }
 
+.detail-chat-top {
+    border-bottom: 1px solid #DDD;    
+}
+
+.detail-chat-top a {
+    float: right;
+    padding: 10px 0;
+}
+
+.detail-chat-list ul {
+
+}
+
+.detail-chat-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #DDD;
+}
+
+.detail-chat-list li > div {
+    float: left;
+}
+
+.detail-chat-list .detail-chat-left {
+    width: 100px;
+    margin: 0 20px 0 0;
+}
+
+.detail-chat-list .detail-chat-right p {
+    line-height: 2em;
+}
+
+
+
 .app-view-msg-detail .app-view-nav-bar .btn-handle-cancel {
     width: 100%;
 }

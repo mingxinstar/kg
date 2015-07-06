@@ -81,7 +81,7 @@ define(function (require) {
             require(['views/checkinHandler-T'], function (handlerView) {
                 var view = new handlerView();
 
-                that.$el.append(view.render().$el);
+                that.$el.append(view.$el);
             });
         }
     });

@@ -8,7 +8,7 @@
             <span class="color-red"><%=teacher.name%></span>
         </div>
         <div class="detail-info-right">
-            <p><%=core.getTime(data.ts*1000)%></p>
+            <p class="color-999"><%=core.getTime(data.ts*1000)%></p>
             <p><%=data.title%></p>
         </div>
     </div>
@@ -47,6 +47,34 @@
             <% } %>
         </div> 
     <% } %>
+    <div class="detail-chat-area">
+        <div class="detail-chat-top clearfix">
+            <a href="javascript:;" class="detail-chat-new color-333">
+                <i class="fa fa-comment"></i>
+                回复
+            </a>
+        </div>
+        <ul class="detail-chat-list">
+            <% var chatList = data.chats || []; for (var i = 0, l = chatList.length; i < l; i++) { var chat = chatList[i], person = kd.get(chat._id); %>
+                <li class="clearfix">
+                    <div class="ava-area detail-chat-left">
+                        <a href="#user/<%=chat._id%>" class="ava ava-sm">
+                            <img src="<%=core.getAvatar(chat._id)%>" alt="">
+                        </a>
+                        <% if (kd.isTeacher(chat._id)) { %>
+                            <span class="color-red"><%=person.name%></span>
+                        <% } else { %>
+                            <span class="<%=person.sex === 0 ? "color-pink" : "color-blue"%>"><%=person.name+kd.getCall(chat.role)%></span>
+                        <% } %>
+                    </div>
+                    <div class="detail-chat-right">
+                        <p class="color-999"><%=core.getTime(chat.ts*1000)%></p>
+                        <p><%=chat.content%></p>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    </div>
 </div>
 <nav class="app-view-nav-bar">
     <a href="javascript:;" class="btn-handle-cancel">返回</a>

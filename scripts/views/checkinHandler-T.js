@@ -13,7 +13,7 @@ define(function (require) {
         core = require('base/core'),
         kd = require('models/kd'),
         checkinModel = require('models/checkin'),
-        checkinCollection = require('collections/checkinList-T'),
+        checkinList = require('collections/checkinList-T'),
         todayListView = require('views/checkinTodayList-T'),
         handlerTmpl = require('text!templates/checkin/handler.html');
 
@@ -25,12 +25,17 @@ define(function (require) {
             'tap .btn-handle-cancel' : 'close',
             'tap .btn-handle-confirm' : 'confirm'
         },
+        collection : checkinList,
         initialize : function () {
             this.model = new checkinModel();
+
+            this.listenTo(this.collection, 'reset', this.render);
+
+            this.collection.load();
         },
         render : function () {
             var allChildren = kd.getChildren(),
-                absencChildren = checkinCollection.getTodayAbsence(),
+                absencChildren = checkinList.getTodayAbsence(),
                 children = _.reject(allChildren, function (child) {
                     var sameChild = _.find(absencChildren, function (abChild) {
                         return abChild.child_id === child._id;
