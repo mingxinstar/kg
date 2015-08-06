@@ -15,6 +15,8 @@ define(function (require) {
     var _isReady = false;
     // 配置微信相关设置
     function init () {
+        core.debug('weixin init');
+
         var url = encodeURIComponent(location.href.split('#')[0]),
             ts = Math.round(new Date().getTime()/1000),
             fn = function (res) {
@@ -31,19 +33,21 @@ define(function (require) {
                 weixin.config(config);
 
                 weixin.ready(function () {
-                    core.debug('ready');
+                    core.debug('weixin ready');
                 });
 
                 weixin.error(function (wres) {
-                    alert(JSON.stringify(config));
+                    core.debug('weixin config : ', config);
 
-                    alert(url)
+                    // alert(url)
 
-                    alert(location.href.split('#')[0])
+                    // alert(location.href.split('#')[0])
 
-                    alert(JSON.stringify(wres));
+                    // alert(JSON.stringify(wres));
                 });
             };
+
+        core.debug('weixin url : ', url, ts);
 
         core.getResult({
             url : ACTION,

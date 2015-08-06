@@ -37,8 +37,6 @@ define(function (require) {
         render : function () {
             var data = this.model.toJSON();
 
-            core.debug('change : ', data);
-
             if (!data.teacher_id) {
                 return this;
             }
@@ -77,8 +75,6 @@ define(function (require) {
                 confirmButtonText : '确定',
                 closeOnConfirm : false
             }, function (isConfirm) {
-                core.debug('swal : ', isConfirm);
-
                 var text = $('#msg-detail-textarea').val().trim();
 
                 if (text.length === 0) {

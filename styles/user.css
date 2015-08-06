@@ -59,10 +59,22 @@
     margin: -5px 10px 0 0;
 }
 
+.app-view-user .leave-msg-area {
+    margin: 20px 20px 50px;
+    padding: 20px;
+    border-bottom: 1px solid #DDD;
+    background-color: #FFF;
+    text-align: center;
+}
+
+.app-view-user .leave-msg-area * {
+    display: block;
+}
+
 /*编辑状态下的样式*/
 
 .app-view-user-self li .user-info-edit {
-    
+
 }
 
 .app-view-user-self li .user-info-edit > * {
@@ -79,7 +91,7 @@
 }
 
 .app-view-user-self .user-sex-radio {
-    
+
 }
 
 .app-view-user-self .user-sex-radio label {
@@ -92,7 +104,24 @@
 }
 
 .app-view-user-self .user-sex-radio input {
-    width: 30px;    
+    width: 30px;
     height: 30px;
     margin: 5px 10px 0 0;
+}
+
+/*用户中心留言板样式*/
+.app-view-user-msg {
+    
+}
+
+.app-view-user-msg ul {
+
+}
+
+.app-view-user-msg li {
+    
+}
+
+.app-view-user-msg .app-view-nav-bar a {
+    width: 100%;
 }

@@ -23,7 +23,8 @@ define(function (require) {
             'tap li' : 'handleEdit',
             'tap .app-view-nav-bar a' : 'close',
             'keypress .common-input' : 'handleKeyPress',
-            'change .user-sex-radio input' : 'changeSex'
+            'change .user-sex-radio input' : 'changeSex',
+            'tap .user-info-msg' : 'showMsg'
         },
         initialize : function (user_id) {
             core.loadCss('user');
@@ -86,6 +87,15 @@ define(function (require) {
                 value = $this.val();
 
             this.model.changeSex(value);
+        },
+        /**
+         * 显示留言面板
+         * @return {[type]} [description]
+         */
+        showMsg : function () {
+            require(['views/userMsg'], function (msgView) {
+
+            });
         }
     });
 
